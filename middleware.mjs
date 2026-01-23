@@ -1,11 +1,11 @@
-let fileEndings = ['jpg', 'jpeg', 'ppx', 'gif', 'docx', 'xlxs', 'png', 'gif']
+let fileEndings = ['jpg', 'jpeg', 'ppx', 'gif', 'docx', 'xlxs', 'png', 'exe']
 for (let i = 0; i < fileEndings.length; i++) {
     const file = fileEndings[i];
 }
 
 
 
-let aFileTest = 'mytest.gif'
+let aFileTest = 'mytest.exe'
 
 export function validateFileType(fileType){
     const fileEnding = fileType.split('.').pop();
