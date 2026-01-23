@@ -22,7 +22,7 @@ changeFiles.put("/:id", (req, res) => {
 deleteFiles.delete("/:id", (req, res) => {
   const { id } = req.params;
   res.status(200).send(`Successfully deleted file ${id}`);
-})git
+})
 
 getFiles.get("/:id", (req, res) => {
   const { id } = req.params;
