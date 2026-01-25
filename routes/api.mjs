@@ -1,9 +1,10 @@
 import express from "express";
+import { validateFileType } from "../middleware.mjs";
 export const postFiles = express.Router();
 export const getFiles = express.Router();
 export const changeFiles = express.Router();
 export const deleteFiles = express.Router();
-postFiles.post("/:id", (req, res) => {
+postFiles.post("/:id", validateFileType, (req, res) => {
   const { id } = req.params;
 
   res.status(201).json({
