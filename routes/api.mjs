@@ -1,10 +1,7 @@
 import express from "express";
 import { validateFileType } from "../middleware.mjs";
-export const postFiles = express.Router();
-export const getFiles = express.Router();
-export const changeFiles = express.Router();
-export const deleteFiles = express.Router();
-postFiles.post("/:id", validateFileType, (req, res) => {
+export const fileRouter = express.Router();
+fileRouter.post("/:id", validateFileType, (req, res) => {
   const { id } = req.params;
 
   res.status(201).json({
@@ -15,17 +12,17 @@ postFiles.post("/:id", validateFileType, (req, res) => {
 });
 
 
-changeFiles.put("/:id", (req, res) => {
+fileRouter.put("/:id", (req, res) => {
   const { id } = req.params;
   res.status(200).send(`Changed the file or the status on file ${id}`);
 })
 
-deleteFiles.delete("/:id", (req, res) => {
+fileRouter.delete("/:id", (req, res) => {
   const { id } = req.params;
   res.status(200).send(`Successfully deleted file ${id}`);
 })
 
-getFiles.get("/:id", (req, res) => {
+fileRouter.get("/:id", (req, res) => {
   const { id } = req.params;
 
   res.status(200).json({
