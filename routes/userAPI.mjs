@@ -1,7 +1,8 @@
 import express from "express";
 import { generateID } from "../dataObjects/user.mjs"
 import user from "../dataObjects/user.mjs"
-export const userRouter = express.Router();
+import settingsRouter from "./settingsAPI.mjs";
+const userRouter = express.Router();
 userRouter.use(express.json())
 
 userRouter.post('/', (req, res) => {
@@ -10,3 +11,5 @@ userRouter.post('/', (req, res) => {
 
   res.json(JSON.stringify(newUser));
 })
+
+export default userRouter;

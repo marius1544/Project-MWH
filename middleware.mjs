@@ -1,6 +1,6 @@
 let fileEndings = ['jpg', 'jpeg', 'ppx', 'gif', 'docx', 'xlxs', 'png', 'exe']
 
-export function validateFileType(req, res, next){
+function validateFileType(req, res, next){
     const fileType = req.body.filename
 
     if(!fileType){
@@ -19,3 +19,4 @@ export function validateFileType(req, res, next){
    }
 }
 
+export default validateFileType;
