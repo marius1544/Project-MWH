@@ -1,6 +1,7 @@
 import express from "express";
 import { fileRouter} from "./routes/api.mjs"
 import 'dotenv/config';
+import { userRouter } from "./routes/userAPI.mjs";
 
 
 const PORT = process.env.PORT;
@@ -10,7 +11,7 @@ app.use(express.json());
 app.use(express.static('public'))
 
 app.use('/files', fileRouter);
-
+app.use('/user', userRouter)
 app.get('/', (req, res) => {
   res.send('Hello Worlds');
 })
