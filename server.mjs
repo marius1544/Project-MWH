@@ -1,9 +1,10 @@
 import express from "express";
 import { postFiles, getFiles, changeFiles, deleteFiles} from "./routes/api.mjs"
 import { settingsRouter } from './routes/settingsAPI.mjs'
+import 'dotenv/config';
 
-//const PORT = system.env.PORT || 8080;
-const PORT = 8081;
+
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
