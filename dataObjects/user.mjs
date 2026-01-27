@@ -2,14 +2,15 @@ const Users = {};
 
 function user(){
     return{
-        id: null
+        id: null,
+        username: null
     }
 }
 
 export function generateID(){
     let id = null;
     do {
-        id = (Math.random() * Number).toString(16);
+        id = (Math.random() * Number.MAX_SAFE_INTEGER).toString(16);
     } while (Users[id])
         return id;
 }
