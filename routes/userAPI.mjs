@@ -27,5 +27,10 @@ userRouter.delete('/:id', (req, res) => {
   }
 });
 
+userRouter.get('/', (req, res) => {
+  const ids = Object.keys(Users);
+  res.json(JSON.stringify(`Current ids stored: ${ids} `))
+})
+
 
 export default userRouter;
