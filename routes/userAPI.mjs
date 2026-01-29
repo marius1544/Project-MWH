@@ -25,7 +25,7 @@ userRouter.delete("/:id", (req, res) => {
 });
 
 userRouter.get("/", (req, res) => {
-   res.json(JSON.stringify(Users));
+   res.send(Users)
 });
 
 export default userRouter;
