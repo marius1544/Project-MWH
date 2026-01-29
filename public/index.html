@@ -17,23 +17,11 @@
 <br>
 <label for="settings">Settings:</label>
 <select id="settings">
-  <option selected>Choose value</label>
-  <option id="dark-ligth" value="dark-light">☀️/🌙 Dark/ligth mode</option>
-  <option value="retract-delete">Retract consent & delete account</option>
+    <option selected disabled>Choose setting</option>
+    <option value="toggle-theme">☀️ / 🌙 Dark / Light mode</option>
+    <option value="retract-delete">❌ Retract consent & delete account</option>
 </select>
  <button id="retract-delete">Retract</button><br>
  <input id="userIdInp" type="text" placeholder="Input your ID here">
- <script>
-    function divBuilder(e){
-      let btn = document.getElementById("retract-delete");
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        console.log("SUP");
-        
-      })
-      
-    }
-
-  </script>
 </body>
 </html>
