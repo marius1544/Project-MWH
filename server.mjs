@@ -1,5 +1,5 @@
 import express from "express";
-import fileRouter from "./routes/api.mjs"
+import fileRouter from "./routes/check-file-api.mjs"
 import 'dotenv/config';
 import userRouter from "./routes/userAPI.mjs";
 
