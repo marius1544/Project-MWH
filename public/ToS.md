@@ -1,9 +1,9 @@
 # Terms of Service
 
-Ved å bruke tjenesten godtar du at vi lagrer ditt brukernavn og samtykke.
+By using this service, you agree that your username and consent are stored in order to provide the service.
 
-Du eier dine data, men tjenesten har lov til å bruke dataene for å tilby funksjonalitet.
+You retain ownership of your data. The service is granted a limited right to use this data solely to provide functionality.
 
-Du kan når som helst trekke samtykke og slette kontoen din.
+You may withdraw consent and delete your account at any time.
 
-Dette er en enkel tjeneste for læringsformål, og vi følger prinsippene om dataminimering og personvern.
+This service is provided for learning purposes and follows principles of data minimization and privacy
