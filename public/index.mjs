@@ -15,20 +15,13 @@ TOSmenuCheckboxVar.addEventListener("change", () => {
 submitTosBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   const usernameVar = userNameInp.value;
-
-  let hasConsented = false;
-  if (TOSmenuCheckboxVar.checked) {
-    hasConsented = true;
-  } else {
-    hasConsented = false;
-  }
-
+  const hasConsented = true;
   
 if (!usernameVar) {
     formOutPutFieldVar.innerHTML = "Username is required.";
     return;
   }
-  
+
   try {
     const response = await fetch("/user", {
       method: "POST",
