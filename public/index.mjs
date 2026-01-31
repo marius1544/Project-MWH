@@ -4,6 +4,13 @@ const userNameInp = document.getElementById("usernameInp");
 const formOutPutFieldVar = document.getElementById("formOutPutField");
 const retractBtn = document.getElementById("retract-delete");
 const userIdInp = document.getElementById("userIdInp");
+  
+submitTosBtn.disabled=true;
+
+TOSmenuCheckboxVar.addEventListener("change", () => {
+    submitTosBtn.disabled = TOSmenuCheckboxVar.checked == false;
+  })
+  
 
 submitTosBtn.addEventListener("click", async (event) => {
   event.preventDefault();
