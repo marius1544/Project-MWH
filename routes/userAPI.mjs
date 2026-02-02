@@ -5,12 +5,11 @@ import { Users, generateID } from "../dataObjects/user.mjs";
 const userRouter = express.Router();
 userRouter.use(express.json());
 userRouter.post("/", (req, res) => {
-const consent = req.body.consent;
-
-  if (consent !== true) {
-    res.status(400).send("You need to agree to the Terms of Sercice!");
-    return;
-  }
+const consent = req.body.consent === true || req.body.consent === "true";
+    if (!consent) {
+        res.status(400).send("You need to agree to the Terms of Service!");
+        return;
+    }
   let newUser = user();
   newUser.id = generateID();
   newUser.username = req.body.username;
