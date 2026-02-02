@@ -18,13 +18,13 @@ Responses are simulated and files are not persisted.
 
 ---
 
-### POST /postFile/:id
+### POST /files/:id
 
 Creates (simulates) a new file.
 
 **Request**
 - Method: `POST`
-- URL: `/postFile/:id`
+- URL: `/files/:id`
 - Body:
 ```json
 {
@@ -50,13 +50,13 @@ The file is not stored and exists only in the response.
 
 ---
 
-### GET /getFiles/:id
+### GET /files/:id
 
 Retrieves (simulates) a file.
 
 **Request**
 - Method: `GET`
-- URL: `/getFiles/:id`
+- URL: `/files/:id`
 
 **Response**  
 Status: `200 OK`
@@ -73,13 +73,13 @@ Simulates retrieving a file by its `id`.
 
 ---
 
-### PUT /changeFiles/:id
+### PUT /files/:id
 
 Updates (simulates) a file or file status.
 
 **Request**
 - Method: `PUT`
-- URL: `/changeFiles/:id`
+- URL: `/files/:id`
 
 **Response**  
 Status: `200 OK`
@@ -93,13 +93,13 @@ No validation or storage is performed.
 
 ---
 
-### DELETE /deleteFiles/:id
+### DELETE /files/:id
 
 Deletes (simulates) a file.
 
 **Request**
 - Method: `DELETE`
-- URL: `/deleteFiles/:id`
+- URL: `/files/:id`
 
 **Response**  
 Status: `200 OK`
@@ -134,6 +134,7 @@ Creates a new user.
 - Body:
 ```json
 {
+  "id": "",
   "username": "exampleUser",
   "consent": true
 }
@@ -161,10 +162,10 @@ Deletes a user and retracts consent.
 
 **Request**
 - Method: `DELETE`
-- URL: `/user/:id`
+- URL: `/user/id`
 
 **Response**  
-Status: `200 OK`
+Status: `User "id" deleted`
 ```
 User abc123 deleted.
 ```
@@ -203,16 +204,7 @@ This endpoint would normally be protected or removed in production.
 
 ## Settings API
 
-The application also includes a basic settings API.
-
-**Base path**
-```
-/settings
-```
-
-(This API is not critical at the current stage of development.)
-
----
+This is not currently functioning, but will be made when the application is near done.
 
 ## Status Codes Used
 
