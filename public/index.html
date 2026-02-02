@@ -4,48 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Secure your files</title>
-    <script type="module" src="index.mjs"></script>
-    <link rel="stylesheet" href="index.css" />
+   <link rel="stylesheet" href="index.css" />
+    <script type="module" src="user-main.mjs"></script>
+    <div id="pageContainer"></div>
   </head>
   <body>
-    <form id="InputForm">
-      <input
-        id="usernameInp"
-        type="text"
-        placeholder="Input username here"
-      /><br />
-      <input id="TOSmenuCheckbox" type="checkbox" />
-      <label for="TOSmenuCheckbox"
-        >Click checkbox to agree to
-        <a href="./utils-folder/ToS.md">Terms of service</a>
-      </label>
-      <button id="submitTOS">Submit</button>
-      <p>
-        Read our privacy policy
-        <a href="./utils-folder/Privacy-policy.md">here</a>
-      </p>
-      <p id="formOutPutField"></p>
-    </form>
-    <br />
-    <div id="Settings">
-      <img
-        id="settings-gear"
-        src="./utils-folder/settings-gear.png"
-        alt="settings-gear"
-      />
-    </div>
-    <div class="sub-menu">
-      <div class="settingsClass" value="toggle-theme">
-        ☀️ / 🌙 Dark / Light mode
-      </div>
-      <div id="retract-consent" class="settingsClass" value="retract-delete">
-        ❌ Retract consent & delete account
-      </div>
-    </div>
-
-    <div class="input-div-sub-menu">
-      <input id="userIdInp" type="text" placeholder="Input your ID here" />
-      <button id="retract-delete">Retract</button>
-    </div>
   </body>
 </html>
