@@ -1,31 +1,24 @@
-export function UserResponse (){
-   async function createUser(method, username, consent){
-    const response = await fetch(`/user/`, { 
-      method: `${method}`,
+   export async function UserFunction({ method, userID = null, username, consent }){
+    let url = userID;
+    if(userID){
+        url = `/user/${userID}`
+    }else {
+        url = `/user/`
+    }
+    const response = await fetch(url, { 
+      method,
     headers: {
             "Content-Type": "application/json",
           },
-    body: JSON.stringify({
-            username,
-            consent,
-          }),
+    body: JSON.stringify({ username, consent }),
        });
 
        try {
     const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.message || "Server error");
-      }
-
-     return data;
+    return data;
       
        }catch(err){
         this.formOutPutFieldVar.innerHTML = `Error ${err}`;
         throw err;
        }
   }
-
-
-  return { createUser }
-}
