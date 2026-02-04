@@ -1,4 +1,4 @@
- import { UserResponse } from "./utils-folder/utils.mjs";
+ import { UserFunction } from "./utils-folder/utils.mjs";
  let formOutPutFieldVar = document.createElement("div");
 export class CreateUserClass extends HTMLElement {
   constructor() {
@@ -48,7 +48,12 @@ formOutPutFieldVar.innerHTML = `<p id="formOutPutField"></p>`;
 
       try {
        
-        const userResponse = UserResponse().createUser("POST", usernameVar, hasConsented);
+        const userResponse = UserFunction(
+          {
+          method: "POST",
+          username: usernameVar,
+          consent: hasConsented
+      });
         const data = await userResponse;
 
         formOutPutFieldVar.innerHTML = `User ${data}`;
