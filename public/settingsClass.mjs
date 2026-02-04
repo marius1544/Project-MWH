@@ -1,3 +1,4 @@
+import { UserFunction } from "./utils-folder/utils.mjs";
 export class SettingsClass extends HTMLElement {
   constructor() {
     super();
@@ -38,7 +39,6 @@ export class SettingsClass extends HTMLElement {
     const subMenu = this.querySelector(".sub-menu");
     const retractConsent = document.getElementById("retract-consent");
     const inputDivSubMenu = this.querySelector(".input-div-sub-menu");
-   
 
     settingsIcon.addEventListener("click", () => {
       subMenu.classList.toggle("open");
@@ -49,28 +49,23 @@ export class SettingsClass extends HTMLElement {
     });
   }
 
-  retractDeleteCallback(){
-     const retractBtn = document.getElementById("retract-delete");
+  retractDeleteCallback() {
+    const retractBtn = document.getElementById("retract-delete");
     const userIdInp = document.getElementById("userIdInp");
     retractBtn.addEventListener("click", async () => {
       const userimpVar = userIdInp.value;
 
       try {
-        const response = await fetch(`/user/${userimpVar}`, {
+        const response = UserFunction({
           method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: userimpVar,
-          }),
+          userID: userimpVar,
         });
-        const data = await response.json();
+        const data = await response;
+
         alert(data, userIdInp.value);
-      } catch {
-        console.log("Feil ved sletting av bruker:");
+      } catch (err) {
+        console.log("Feil ved sletting av bruker:", err);
       }
     });
   }
 }
-
