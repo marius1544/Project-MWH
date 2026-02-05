@@ -175,10 +175,36 @@ Deletes the user account and removes personal data.
 Public contributions may remain in anonymized form.
 
 ---
+### PUT /user
 
+Changes username
+
+**Request**
+- Method: `PUT`
+- URL: `/user`
+
+**Test in Postman**
+- With the URL written: localhost:8080/user/id
+body should contain a json format of
+
+{
+  "username": "name"
+}
+
+**Response**  
+Status: `200 OK`
+```json
+{"message": "User updated successfully",
+    "user": {
+        "id": "1d021024cd6ee5",
+        "username": "kari",
+        "consent": "Consent:true"
+    }
+}
+```
 ### GET /user
 
-Retrieves all users (for development/testing only).
+Retrieves user where the id matches the users id.
 
 **Request**
 - Method: `GET`
@@ -191,15 +217,12 @@ Status: `200 OK`
   "abc123": {
     "id": "abc123",
     "username": "exampleUser",
-    "consent": true
   }
 }
 ```
 
 **Description**  
-Returns all users currently stored in memory.  
-This endpoint would normally be protected or removed in production.
-
+Returns only the id that matches and is stored in memory.  
 ---
 
 ## Settings API
