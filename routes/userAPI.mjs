@@ -1,6 +1,7 @@
 import express from "express";
 import user from "../dataObjects/user.mjs";
 import { Users, generateID } from "../dataObjects/user.mjs";
+import { get } from "http";
 
 const userRouter = express.Router();
 userRouter.use(express.json());
@@ -29,8 +30,12 @@ userRouter.delete("/:id", (req, res) => {
   }
 });
 
-userRouter.get("/", (req, res) => {
-   res.send(Users)
+userRouter.get("/:id", (req, res) => {
+  const id = req.params.id;
+  if (Users[id]){
+     res.send(Users) 
+  }
+  
 });
 
 export default userRouter;
