@@ -1,10 +1,12 @@
    export async function UserFunction({ method, userID = null, username, consent }){
-    let url = userID;
-    if(userID){
-        url = `/user/${userID}`
+    let url = "/user";
+    
+    if(method === "POST"){
+      url = "/user"
     }else {
-        url = `/user/`
+      url = `/user/${userID}`;
     }
+    
     const response = await fetch(url, { 
       method,
     headers: {
@@ -18,7 +20,7 @@
     return data;
       
        }catch(err){
-        this.formOutPutFieldVar.innerHTML = `Error ${err}`;
+        console.log(`Error ${err}`);
         throw err;
        }
   }
