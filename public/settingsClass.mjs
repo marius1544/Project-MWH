@@ -61,5 +61,5 @@ export class SettingsClass extends HTMLElement {
     editUser.addEventListener("click", () => {
       editUserDiv.classList.toggle("open");
     });
-  } 
+  }
 }

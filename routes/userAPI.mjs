@@ -13,7 +13,7 @@ const consent = req.body.consent === true || req.body.consent === "true";
   let newUser = user();
   newUser.id = generateID();
   newUser.username = req.body.username;
-  newUser.consent = "Consent:" + req.body.consent;
+  newUser.consent = consent;
 
   Users[newUser.id] = newUser;
   res.json(JSON.stringify(newUser));
