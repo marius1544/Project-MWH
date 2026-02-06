@@ -1,4 +1,3 @@
-import { UserFunction } from "./utils-folder/utils.mjs";
 export class SettingsClass extends HTMLElement {
   constructor() {
     super();
@@ -44,7 +43,7 @@ export class SettingsClass extends HTMLElement {
     this.appendChild(Settings);
   }
 
-  settingsMenuCallback() {
+  connectedCallback() {
     const settingsIcon = document.getElementById("Settings");
     const subMenu = this.querySelector(".sub-menu");
     const retractConsent = document.getElementById("retract-consent");
@@ -62,48 +61,5 @@ export class SettingsClass extends HTMLElement {
     editUser.addEventListener("click", () => {
       editUserDiv.classList.toggle("open");
     });
-  }
-
-  retractDeleteCallback() {
-    const retractBtn = document.getElementById("retract-delete");
-    const userIdInp = document.getElementById("userIdInp");
-    retractBtn.addEventListener("click", async () => {
-      const userimpVar = userIdInp.value;
-
-      try {
-        const response = UserFunction({
-          method: "DELETE",
-          userID: userimpVar,
-        });
-        const data = await response;
-
-        alert(data, userIdInp.value);
-      } catch (err) {
-        console.log("Feil ved sletting av bruker:", err);
-      }
-    });
-  }
-
-  editUserCallback() {
-    const submitUsernameBtn = document.getElementById("submitUsernameBtn");
-    const idInputFieldVar = document.getElementById("idInputField");
-    const newUsernameInputFieldVar = document.getElementById(
-      "newUsernameInputField",
-    );
-
-    submitUsernameBtn.addEventListener("click", async () => {
-      try {
-        const response = await UserFunction({
-          method: "PUT",
-          userID: idInputFieldVar.value,
-          username: newUsernameInputFieldVar.value,
-        });
-        alert(
-          `Successfully updated your username to ${newUsernameInputFieldVar.value}`,
-        );
-      } catch (err) {
-        console.log("Feil ved oppdatering av brukernavn:", err);
-      }
-    });
-  }
+  } 
 }
