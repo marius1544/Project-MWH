@@ -21,5 +21,14 @@
 
 .settingsClass {
     border: 1px solid black;   
-    display: inline-block; 
+    display: inline-block;
+}
+
+.editUserDiv{
+    display: none;
+}
+
+.editUserDiv.open{
+    display: block;
+      margin-top: 30px;
 }
