@@ -20,6 +20,7 @@ function loadData(){
         CreateUser.createUserCallback();
         UserSettings.settingsMenuCallback();
         UserSettings.retractDeleteCallback();
+        UserSettings.editUserCallback();
     }catch(err){
         console.log("Error", err);
     }
