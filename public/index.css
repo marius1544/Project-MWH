@@ -1,20 +1,36 @@
+ #Settings {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
  #settings-gear{
     width: 60px;
  }
    .sub-menu {
-    display: none;
+  display: none;
+  position: absolute;
+  top: 70px;      /* under gear */
+  right: 0;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
 }
 
 .sub-menu.open {
-    display: block;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.input-div-sub-menu{
+.delete-user-view{
     display: none;
 }
 
-.input-div-sub-menu.open{
+.delete-user-view.open{
     display: block;
     margin-top: 30px;
 }
@@ -24,11 +40,30 @@
     display: inline-block;
 }
 
-.editUserDiv{
+.edit-user-view{
     display: none;
 }
 
-.editUserDiv.open{
+.edit-user-view.open{
     display: block;
       margin-top: 30px;
+}
+
+#pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#usernameInp {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
 }
