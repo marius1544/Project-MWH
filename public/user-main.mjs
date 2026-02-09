@@ -22,4 +22,3 @@ const pageContainer = document.getElementById("pageContainer");
 pageContainer.appendChild(CreateUser);
 pageContainer.appendChild(UserSettings);
 pageContainer.appendChild(EditUser);
-pageContainer.appendChild(DeleteUser);
