@@ -28,16 +28,10 @@ export class SettingsClass extends HTMLElement {
 
   <button id="edit-user" class="settingsClass">Edit user</button>
 
-  <div class="editUserDiv">
-    <input id="idInputField" placeholder="Enter id" />
-    <input id="newUsernameInputField" placeholder="Enter new username" />
-    <button id="submitUsernameBtn" type="button">Submit</button>
+  <edit-user-view class="edit-user-view"></edit-user-view>
+  
+<delete-user-view class="delete-user-view"></delete-user-view> 
 </div>
-
-  <div class="input-div-sub-menu">
-    <input id="userIdInp" type="text" placeholder="Input your ID here" />
-    <button id="retract-delete">Retract</button>
-  </div>
     `;
 
     this.appendChild(Settings);
@@ -47,19 +41,19 @@ export class SettingsClass extends HTMLElement {
     const settingsIcon = document.getElementById("Settings");
     const subMenu = this.querySelector(".sub-menu");
     const retractConsent = document.getElementById("retract-consent");
-    const inputDivSubMenu = this.querySelector(".input-div-sub-menu");
+ const deleteUserViewDiv = document.querySelector("delete-user-view")
+ const editUserViewDiv = document.querySelector("edit-user-view")
     const editUser = document.getElementById("edit-user");
-    const editUserDiv = this.querySelector(".editUserDiv");
     settingsIcon.addEventListener("click", () => {
       subMenu.classList.toggle("open");
     });
 
     retractConsent.addEventListener("click", () => {
-      inputDivSubMenu.classList.toggle("open");
+      deleteUserViewDiv.classList.toggle("open");
     });
 
     editUser.addEventListener("click", () => {
-      editUserDiv.classList.toggle("open");
+      editUserViewDiv.classList.toggle("open");
     });
   }
 }
