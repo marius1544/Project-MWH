@@ -1,14 +1,12 @@
- #Settings {
+ #settings-gear {
   position: fixed;
   top: 15px;
   right: 15px;
   cursor: pointer;
   z-index: 1000;
+  width: 60px;
 }
 
- #settings-gear{
-    width: 60px;
- }
    .sub-menu {
   display: none;
   position: absolute;

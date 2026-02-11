@@ -1,7 +1,7 @@
 import express from "express";
-import fileRouter from "./routes/check-file-api.mjs"
+import fileRouter from "./server-routes/check-file-api.mjs"
 import 'dotenv/config';
-import userRouter from "./routes/userAPI.mjs";
+import userRouter from "./server-routes/userAPI.mjs";
 
 
 const PORT = process.env.PORT;

@@ -1,5 +1,5 @@
 import express from "express";
-import validateFileType from "../middleware.mjs";
+import validateFileType from "./middleware.mjs";
  const fileRouter = express.Router();
 fileRouter.post("/:id", validateFileType, (req, res) => {
   const { id } = req.params;
