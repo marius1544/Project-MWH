@@ -1,3 +1,4 @@
+   import fetchRequest from "./fetchreq.mjs"
    export async function UserFunction({ method, userID = null, username, consent }){
     let url = "/user";
     
@@ -7,7 +8,7 @@
       url = `/user/${userID}`;
     }
     
-    const response = await fetch(url, { 
+    const response = await fetchRequest(url, { 
       method,
     headers: {
             "Content-Type": "application/json",

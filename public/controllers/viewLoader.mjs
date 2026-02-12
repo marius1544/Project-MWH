@@ -1,5 +1,7 @@
+import fetchRequest from "../utils-folder/fetchreq.mjs";
+
 async function loadView(path) {
-  const response = await fetch(path);
+  const response = await fetchRequest(path);
   const html = await response.text();
 
   const template = document.createElement("template");
