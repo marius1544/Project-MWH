@@ -1,55 +1,56 @@
 import express from "express";
-import user from "../dataObjects/user.mjs";
-import { Users, generateID } from "../dataObjects/user.mjs";
+import user, { getUserBackend } from "../dataObjects/user.mjs";
+import {
+  Users,
+  createUserBackend,
+  deleteUserBackend,
+  putUserBackend,
+} from "../dataObjects/user.mjs";
 
 const userRouter = express.Router();
 userRouter.use(express.json());
 userRouter.post("/", (req, res) => {
-const consent = req.body.consent === true || req.body.consent === "true";
-    if (!consent) {
-        res.status(400).send("You need to agree to the Terms of Service!");
-        return;
-    }
-  let newUser = user();
-  newUser.id = generateID();
-  newUser.username = req.body.username;
-  newUser.consent = consent;
-
-  Users[newUser.id] = newUser;
-  res.json(JSON.stringify(newUser));
+  try {
+    const newUser = createUserBackend(req.body);
+    res.json(JSON.stringify(newUser));
+  } catch (err) {
+    res.status(400).json(JSON.stringify({ error: err.message }));
+  }
 });
 
 userRouter.put("/:id", (req, res) => {
   const id = req.params.id;
-  
-   if (req.body.username !== undefined){
-    Users[id].username = req.body.username;
-   }
-
-   res.status(200).json({
-    message: "User updated successfully",
-    user: Users[id],
+  try {
+    const user = putUserBackend(id, req.body);
+    res.status(200).json({
+      message: "User updated successfully",
+      user
+    });
+  } catch (err) {
+    return res.status(404).json({ message: `PUTTER ${id} not found` });
+  }
 });
-})
 
 userRouter.delete("/:id", (req, res) => {
   const id = req.params.id;
-  if (Users[id]) {
-    delete Users[id];
-    res.status(200).json(JSON.stringify(`User ${id} deleted.`));
-  } else {
-    res.status(404).json(JSON.stringify(`User ${id} not found`));
+
+  try {
+    const result = deleteUserBackend(id);
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
   }
 });
 
 userRouter.get("/:id", (req, res) => {
   const id = req.params.id;
-  if (Users[id]){
-     res.send(Users[id]) 
-  } else {
+
+  try {
+    const result = getUserBackend(id);
+    res.status(200).json(result);
+  } catch (err) {
     return res.status(404).json({ message: `User ${id} not found` });
   }
-  
 });
 
 export default userRouter;
