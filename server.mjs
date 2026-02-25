@@ -3,8 +3,7 @@ import fileRouter from "./server-routes/check-file-api.mjs";
 import "dotenv/config";
 import userRouter from "./server-routes/userAPI.mjs";
 
-const PORT = process.env.PORT;
-const LocalPORT = process.env.Local_PORT;
+const PORT = process.env.PORT || process.env.Local_PORT || 3000;
 const app = express();
 
 app.use(express.json());
