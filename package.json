@@ -1,0 +1,14 @@
+{
+  "name": "project-mwh",
+  "version": "1.0.0",
+  "description": "User file storage system",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "5.2.1",
+    "dotenv": "17.2.3"
+  }
+}
