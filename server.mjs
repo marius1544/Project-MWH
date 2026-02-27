@@ -4,7 +4,7 @@ import "dotenv/config";
 import userRouter from "./server-routes/userAPI.mjs";
 import { connectDB } from "./db/connection-sql.mjs";
 
-const PORT = process.env.Local_PORT || 3000;
+const PORT = process.env.PORT || process.env.Local_PORT || 3000;
 const app = express();
 
 app.use(express.json());
