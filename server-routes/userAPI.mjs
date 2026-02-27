@@ -1,55 +1,43 @@
 import express from "express";
-import user, { getUserBackend } from "../dataObjects/user.mjs";
-import {
-  Users,
-  createUserBackend,
-  deleteUserBackend,
-  putUserBackend,
-} from "../dataObjects/user.mjs";
-
+import { createUserService, getUserService, putUserService, deleteUserService } from "../modules/userService.mjs";
 const userRouter = express.Router();
 userRouter.use(express.json());
-userRouter.post("/", (req, res) => {
+userRouter.post("/", async (req, res) => {
   try {
-    const newUser = createUserBackend(req.body);
-    res.json(JSON.stringify(newUser));
+    const newUser = await createUserService(req.body);
+    return res.status(201).json(newUser);
   } catch (err) {
     res.status(400).json(JSON.stringify({ error: err.message }));
   }
 });
 
-userRouter.put("/:id", (req, res) => {
-  const id = req.params.id;
+userRouter.put("/:id", async (req, res) => {
   try {
-    const user = putUserBackend(id, req.body);
-    res.status(200).json({
+    const user = await putUserService(req.params.id, req.body);
+    return res.status(200).json({
       message: "User updated successfully",
-      user
+      user,
     });
   } catch (err) {
     return res.status(404).json({ message: `PUTTER ${id} not found` });
   }
 });
 
-userRouter.delete("/:id", (req, res) => {
-  const id = req.params.id;
-
+userRouter.delete("/:id", async (req, res) => {
   try {
-    const result = deleteUserBackend(id);
-    res.status(200).json(result);
+    const result = await deleteUserService(req.params.id);
+    return res.status(200).json(result);
   } catch (err) {
-    res.status(404).json({ error: err.message });
+    return res.status(404).json({ error: err.message });
   }
 });
 
-userRouter.get("/:id", (req, res) => {
-  const id = req.params.id;
-
+userRouter.get("/:id", async (req, res) => {
   try {
-    const result = getUserBackend(id);
-    res.status(200).json(result);
+    const result = await getUserService(req.params.id);
+    return res.status(200).json(result);
   } catch (err) {
-    return res.status(404).json({ message: `User ${id} not found` });
+    return res.status(404).json({ message: `User not found` });
   }
 });
 
