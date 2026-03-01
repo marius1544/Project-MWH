@@ -116,15 +116,7 @@ not be created.
 
 ## Render Deployment
 
-The application is deployed as a Render Web Service using the free tier.
-
-Environment variable required:
-
-    DATABASE_URL=<Render PostgreSQL External URL>
-
-Live URL:
-
-    <<INSERT RENDER URL HERE>>
+Live URL: https://project-mwh.onrender.com/
 
 ------------------------------------------------------------------------
 
