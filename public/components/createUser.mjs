@@ -1,50 +1,47 @@
-import { UserFunction } from "../../utils-folder/utils.mjs";
+import { UserRequest } from "../../utils-folder/utils.mjs";
 import { viewMap } from "../../controllers/views.mjs";
 import loadView from "../../controllers/viewLoader.mjs";
-let formOutPutFieldVar = document.createElement("div");
 export class CreateUserClass extends HTMLElement {
   constructor() {
     super();
-    formOutPutFieldVar.innerHTML = `<p id="formOutPutField"></p>`;
-    this.appendChild(formOutPutFieldVar);
   }
 
  async connectedCallback() {
   const template = await loadView(viewMap.CreateUser);
   this.appendChild(document.importNode(template.content, true));
 
-    const TOSmenuCheckboxVar = this.querySelector("#TOSmenuCheckbox");
-    const userNameInp = this.querySelector("#usernameInp");
+  const outputField = this.querySelector("#OutputField");
+    const TOSmenuCheckbox = this.querySelector("#TOSmenuCheckbox");
+    const userNameInput = this.querySelector("#usernameInp");
     const submitTosBtn = this.querySelector("#submitTOS");
 
     submitTosBtn.disabled = true;
-    TOSmenuCheckboxVar.addEventListener("change", () => {
-      submitTosBtn.disabled = TOSmenuCheckboxVar.checked == false;
+    TOSmenuCheckbox.addEventListener("change", () => {
+      submitTosBtn.disabled = TOSmenuCheckbox.checked == false;
     });
 
     submitTosBtn.addEventListener("click", async (event) => {
       event.preventDefault();
-      const usernameVar = userNameInp.value;
-      const hasConsented = true;
-
-      if (!usernameVar) {
-        formOutPutFieldVar.innerHTML = "Username is required.";
+      const username = userNameInput.value;
+      const hasConsented = TOSmenuCheckbox.checked;
+      if (!username) {
+        outputField.innerHTML = "Username is required.";
         console.log("Username is required.");
         return;
       }
 
       try {
-        const userResponse = UserFunction({
+        const userResponse = UserRequest({
           method: "POST",
-          username: usernameVar,
+          username: username,
           consent: hasConsented,
         });
         const data = await userResponse;
 
-        formOutPutFieldVar.innerHTML = `User ${data}`;
+        outputField.textContent = `User ${data.username} has been added with id: ${data.id}`;
         console.log(data);
       } catch (err) {
-        ((formOutPutFieldVar.innerHTML = `Feil ved opprettelse av bruker`),
+        ((outputField.textContent = `Feil ved opprettelse av bruker`),
           console.log(err));
       }
     });

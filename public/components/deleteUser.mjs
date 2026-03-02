@@ -1,4 +1,4 @@
-import { UserFunction } from "../utils-folder/utils.mjs";
+import { UserRequest } from "../utils-folder/utils.mjs";
 import { viewMap } from "../controllers/views.mjs";
 import loadView from "../controllers/viewLoader.mjs";
 export class DeleteUserClass extends HTMLElement {
@@ -15,7 +15,7 @@ export class DeleteUserClass extends HTMLElement {
       const userimpVar = userIdInp.value;
 
       try {
-        const response = UserFunction({
+        const response = UserRequest({
           method: "DELETE",
           userID: userimpVar,
         });

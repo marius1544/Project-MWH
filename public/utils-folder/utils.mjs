@@ -1,5 +1,5 @@
    import fetchRequest from "./fetchreq.mjs"
-   export async function UserFunction({ method, userID = null, username, consent }){
+   export async function UserRequest({ method, userID = null, username, consent }){
     let url = "/user";
     
     if(method === "POST"){

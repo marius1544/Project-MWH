@@ -1,4 +1,4 @@
-import { UserFunction } from "../../utils-folder/utils.mjs";
+import { UserRequest } from "../../utils-folder/utils.mjs";
 import { viewMap } from "../../controllers/views.mjs";
 import loadView from "../../controllers/viewLoader.mjs";
 export class EditUserClass extends HTMLElement {
@@ -18,7 +18,7 @@ export class EditUserClass extends HTMLElement {
 
     submitUsernameBtn.addEventListener("click", async () => {
       try {
-        const response = await UserFunction({
+        const response = await UserRequest({
           method: "PUT",
           userID: idInputFieldVar.value,
           username: newUsernameInputFieldVar.value,
