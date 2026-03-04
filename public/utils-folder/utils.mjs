@@ -1,5 +1,5 @@
    import fetchRequest from "./fetchreq.mjs"
-   export async function UserRequest({ method, userID = null, username, consent }){
+   export async function UserRequest({ method, userID = null, username, consent, filename }){
     let url = "/user";
     
     if(method === "POST"){
@@ -13,7 +13,7 @@
     headers: {
             "Content-Type": "application/json",
           },
-    body: JSON.stringify({ username, consent }),
+    body: JSON.stringify({ username, consent, filename }),
        });
 
        try {
