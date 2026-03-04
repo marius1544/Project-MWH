@@ -1,10 +1,19 @@
 <div class="imgdiv">
-    <img src="/dropbox-background.jpg">
+  <img src="/dropbox-background.jpg" />
 </div>
 <form id="InputForm">
- <input id="usernameInp" type="text" placeholder="Input username here"/><br>
- <p id="OutputField"></p>
-<input id="TOSmenuCheckbox" type="checkbox" />
-<label for=TOSmenuCheckbox">Click to agree to <a href="./utils-folder/ToS.md">Terms of service</a>
-</label>
-<button id="submitTOS">Submit</button>     
+  <input
+    id="usernameInp"
+    type="text"
+    placeholder="Input username here"
+    required
+  /><br />
+  <p id="OutputField"></p>
+
+  <input id="TOSmenuCheckbox" type="checkbox" required />
+  <label for="TOSmenuCheckbox">
+    Click to agree to 
+    <a href="./utils-folder/ToS.md">Terms of service</a>
+  </label>
+  <button type="submit" id="submitTOS">Submit</button>
+</form>
