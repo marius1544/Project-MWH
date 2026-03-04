@@ -1,11 +1,11 @@
 import { createUser, getUser, putUser, deleteUser } from "../db/dbfile.mjs";
 
-export async function createUserService({ username, consent }) {
+export async function createUserService({ username, consent, filename }) {
 
   if (consent !== true) {
     throw new Error("User must accept TOS to update account");
   }
-  return await createUser(username, consent);
+  return await createUser(username, consent, filename);
 }
 
 export async function getUserService(id) {

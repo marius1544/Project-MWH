@@ -1,15 +1,15 @@
 import { generateID } from "../dataObjects/user.mjs";
 import { client } from "./connection-sql.mjs";
-export async function createUser(username, consent) {
+export async function createUser(username, consent, filename) {
 
   const id = generateID();
 
   const result = await client.query(
-    `INSERT INTO projectmwhtest (id, username, consent)
-     VALUES ($1, $2, $3)
+    `INSERT INTO projectmwhtest (id, username, consent, filename)
+     VALUES ($1, $2, $3, $4)
      RETURNING *
      `,
-     [id, username, consent]
+     [id, username, consent, filename]
   );
 
   return result.rows[0];
