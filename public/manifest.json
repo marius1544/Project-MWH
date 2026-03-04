@@ -1,6 +1,6 @@
 {
-  "short_name": "Weather",
-  "name": "Weather: Do I need an umbrella?",
+  "short_name": "Secure files",
+  "name": "Secure your files here",
   "icons": [
   {
       "src": "./icons/bilde.png",
@@ -17,5 +17,5 @@
   "background_color": "#3367D6",
   "display": "standalone",
   "theme_color": "#3367D6",
-  "description": "Weather forecast information"
+  "description": "Store files comfortably"
 }
