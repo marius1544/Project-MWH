@@ -12,9 +12,10 @@ export class DropboxClass extends HTMLElement {
   }
   getFilename() {
     const fileInput = this.querySelector("#fileinput");
-    const file = fileInput.files[0];
-    const filename = file.name;
 
-    return filename;
+    if (!fileInput) {
+      return null;
+    }
+    return fileInput.files[0].name;
   }
 }

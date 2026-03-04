@@ -13,22 +13,15 @@ export class CreateUserClass extends HTMLElement {
     const outputField = this.querySelector("#OutputField");
     const TOSmenuCheckbox = this.querySelector("#TOSmenuCheckbox");
     const userNameInput = this.querySelector("#usernameInp");
-    const submitTosBtn = this.querySelector("#submitTOS");
-
+const inputForm = this.querySelector("#InputForm")
     const dropbox = document.querySelector("dropbox-view");
 
-    submitTosBtn.disabled = true;
-    TOSmenuCheckbox.addEventListener("change", () => {
-      submitTosBtn.disabled = TOSmenuCheckbox.checked == false;
-    });
-
-    submitTosBtn.addEventListener("click", async (event) => {
+      inputForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       const username = userNameInput.value;
       const hasConsented = TOSmenuCheckbox.checked;
       if (!username) {
-        outputField.innerHTML = "Username is required.";
-        console.log("Username is required.");
+        outputField.innerHTML = "Username and your file is required.";
         return;
       }
 
