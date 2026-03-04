@@ -1,7 +1,5 @@
-import { viewMap } from "../../controllers/views.mjs";
-import loadView from "../../controllers/viewLoader.mjs";
-
-const API_BASE = "http://localhost:8081/upload";
+import { viewMap } from "../controllers/views.mjs";
+import loadView from "../controllers/viewLoader.mjs";
 
 export class DropboxClass extends HTMLElement {
   constructor() {
@@ -11,25 +9,12 @@ export class DropboxClass extends HTMLElement {
   async connectedCallback() {
     const template = await loadView(viewMap.Dropbox);
     this.appendChild(document.importNode(template.content, true));
-
-    const uploadButtonVar = this.querySelector("#uploadBtn");
-    const fileInput = this.querySelector("#fileinput");
-
-   uploadButtonVar.addEventListener("click", async () => {
-   try{
-   const filename = fileInput.filename;
-   return {
-      statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
-      body: JSON.stringify("Test")
-   }
-    
-   }catch(err){
-    console.error(err)
-   } 
-  })
   }
-} 
+  getFilename() {
+    const fileInput = this.querySelector("#fileinput");
+    const file = fileInput.files[0];
+    const filename = file.name;
+
+    return filename;
+  }
+}

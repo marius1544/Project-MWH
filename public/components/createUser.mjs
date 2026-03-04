@@ -6,14 +6,16 @@ export class CreateUserClass extends HTMLElement {
     super();
   }
 
- async connectedCallback() {
-  const template = await loadView(viewMap.CreateUser);
-  this.appendChild(document.importNode(template.content, true));
+  async connectedCallback() {
+    const template = await loadView(viewMap.CreateUser);
+    this.appendChild(document.importNode(template.content, true));
 
-  const outputField = this.querySelector("#OutputField");
+    const outputField = this.querySelector("#OutputField");
     const TOSmenuCheckbox = this.querySelector("#TOSmenuCheckbox");
     const userNameInput = this.querySelector("#usernameInp");
     const submitTosBtn = this.querySelector("#submitTOS");
+
+    const dropbox = document.querySelector("dropbox-view");
 
     submitTosBtn.disabled = true;
     TOSmenuCheckbox.addEventListener("change", () => {
@@ -30,11 +32,15 @@ export class CreateUserClass extends HTMLElement {
         return;
       }
 
+      const filename = dropbox.getFilename();
+      console.log("Selected filename:", filename);
+
       try {
         const userResponse = UserRequest({
           method: "POST",
           username: username,
           consent: hasConsented,
+          filename,
         });
         const data = await userResponse;
 
