@@ -1,6 +1,6 @@
 import { generateID } from "../dataObjects/user.mjs";
 import { client } from "./connection-sql.mjs";
-export async function createUser(username, consent, filename) {
+export async function createUserSQL(username, consent, filename) {
 
   const id = generateID();
 
@@ -15,7 +15,7 @@ export async function createUser(username, consent, filename) {
   return result.rows[0];
 }
 
-export async function getUser(id) {
+export async function getUserSQL(id) {
   const result = await client.query(
     `SELECT * from projectmwhtest WHERE id=$1`,
     [id]
@@ -23,7 +23,7 @@ export async function getUser(id) {
   return result.rows[0];
 }
 
-export async function deleteUser(id){
+export async function deleteUserSQL(id){
    const result = await client.query(
     `DELETE FROM projectmwhtest where id=$1
      RETURNING *
@@ -33,7 +33,7 @@ export async function deleteUser(id){
   return result.rows[0];
 }
 
-export async function putUser(id, { username, consent }) {
+export async function putUserSQL(id, { username, consent }) {
   const result = await client.query(
     `UPDATE projectmwhtest
      SET username = $2,
