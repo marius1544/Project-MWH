@@ -1,0 +1,15 @@
+{
+"title":"Secure your files here",
+ "submitButton":"Submit",
+  "privacypolicy": "Read our privacy policy",
+  "privacylink": "here",
+  "droptext": "Or drag and drop a PNG here:",
+  "usernameInp": "Input username here",
+  "clicktos": "Click to agree to",
+  "toslink": "Terms of service",
+ "feedback": {
+        "confirmation": "Jupp that works, okey dokey",
+        "IncorrectId": "Incorrect id"
+    }
+}
+

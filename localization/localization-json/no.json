@@ -1,0 +1,15 @@
+{
+    "title": "Sikre filene dine her",
+    "submitButton": "Send inn",
+    "privacypolicy": "Les vår personvernerklæring",
+    "privacylink": "her",
+     "droptext": "Eller dra og slipp en PNG her:",
+     "usernameInp": "Skriv inn brukernavnet ditt her",
+     "clicktos": "Klikk her for å godta",
+     "toslink": "bruksvilkår",
+    "feedback": {
+        "confirmation": "Ja det fungerer"
+    }
+}
+
+
