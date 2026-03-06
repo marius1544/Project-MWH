@@ -1,6 +1,6 @@
-import { UserRequest } from "../../utils-folder/utils.mjs";
-import { viewMap } from "../../controllers/views.mjs";
-import loadView from "../../controllers/viewLoader.mjs";
+import { UserRequest } from "../utils-folder/utils.mjs";
+import { viewMap } from "../controllers/views.mjs";
+import loadView from "../controllers/viewLoader.mjs";
 export class EditUserClass extends HTMLElement {
   constructor() {
     super();
