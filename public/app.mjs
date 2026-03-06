@@ -3,7 +3,7 @@ import { SettingsClass } from "./components/settingsClass.mjs";
 import { EditUserClass } from "./components/editUser.mjs"
 import { DeleteUserClass } from "./components/deleteUser.mjs";
 import { DropboxClass } from "./components/dropboxClass.mjs";
-
+import registerServiceWorker from "./service-worker/service-worker.mjs"
 customElements.define("create-user-view", CreateUserClass);
 customElements.define("user-settings-view", SettingsClass);
 customElements.define("edit-user-view", EditUserClass);
@@ -18,3 +18,5 @@ const pageContainer = document.getElementById("pageContainer");
 pageContainer.appendChild(CreateUser);
 pageContainer.appendChild(UserSettings);
 pageContainer.appendChild(DropboxView);
+
+registerServiceWorker()
