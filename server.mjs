@@ -4,7 +4,7 @@ import "dotenv/config";
 import userRouter from "./server/server-routes/userAPI.mjs";
 import { connectDB } from "./db/connection-sql.mjs";
 import { getL10n } from "./server/services/getL10n.mjs";
-const PORT = process.env.PORT || process.env.Local_PORT;
+const PORT = process.env.PORT || process.env.Local_PORT || 3000;
 const app = express();
 
 
