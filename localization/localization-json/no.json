@@ -9,6 +9,7 @@
     "toslink": "bruksvilkår",
     "retractConsent": "Trekk tilbake samtykke, og slett kontoen.",
     "editUser": "Endre brukernavn",
+    "filelabel": "Last opp et PNG bilde",
     "feedback": {
         "confirmation": "Ja det fungerer",
         "IncorrectId": "Feil id",

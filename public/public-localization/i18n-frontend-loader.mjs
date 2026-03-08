@@ -13,6 +13,7 @@ export async function loadLanguage() {
     const toslink = document.querySelector("#tos-link")
     const retractConsent = document.querySelector("#retract-consent")
     const editUser = document.querySelector("#edit-user")
+    const filelabel = document.querySelector("#filelabel")
     submitBtn.textContent = translations.submitButton;
     privacypolicys.textContent = translations.privacypolicy
     privacylink.textContent = translations.privacylink;
@@ -22,6 +23,7 @@ export async function loadLanguage() {
     toslink.textContent = translations.toslink
     retractConsent.textContent = translations.retractConsent
     editUser.textContent = translations.editUser
+    filelabel.textContent = translations.filelabel
 }
 
 export function getTranslations() {

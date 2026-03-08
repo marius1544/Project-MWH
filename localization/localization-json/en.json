@@ -9,6 +9,7 @@
     "toslink": "Terms of service",
     "retractConsent": "Retract consent & delete account",
     "editUser": "Edit username",
+    "filelabel": "Upload a PNG image",
     "feedback": {
         "confirmation": "Jupp that works, okey dokey",
         "IncorrectId": "Incorrect id",
