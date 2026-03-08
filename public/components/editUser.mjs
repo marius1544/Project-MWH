@@ -1,6 +1,7 @@
 import { UserRequest } from "../utils-folder/utils.mjs";
 import { viewMap } from "../controllers/views.mjs";
 import loadView from "../controllers/viewLoader.mjs";
+import { getTranslations } from "../public-localization/i18n-frontend-loader.mjs";
 export class EditUserClass extends HTMLElement {
   constructor() {
     super();
@@ -17,6 +18,8 @@ export class EditUserClass extends HTMLElement {
     );
 
     submitUsernameBtn.addEventListener("click", async () => {
+            const translations = getTranslations();
+
       try {
         const response = await UserRequest({
           method: "PUT",
@@ -26,13 +29,13 @@ export class EditUserClass extends HTMLElement {
 
         if (response) {
           alert(
-            `Successfully updated your username to ${newUsernameInputFieldVar.value}`,
+            `${translations.editUserSuccess} ${newUsernameInputFieldVar.value}`,
           );
         } else {
-          alert(`Can't find id: ${userID}`);
+          alert(`${translations.cantFindId} ${userID}`);
         }
       } catch (err) {
-        console.log("Feil ved oppdatering av brukernavn:", err);
+        alert(`${translations.errorUsername}`, err);
       }
     });
   }

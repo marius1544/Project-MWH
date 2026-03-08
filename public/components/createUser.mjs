@@ -1,6 +1,8 @@
 import { UserRequest } from "../utils-folder/utils.mjs";
 import { viewMap } from "../controllers/views.mjs";
 import loadView from "../controllers/viewLoader.mjs";
+import { getTranslations } from "../public-localization/i18n-frontend-loader.mjs";
+
 export class CreateUserClass extends HTMLElement {
   constructor() {
     super();
@@ -12,18 +14,15 @@ export class CreateUserClass extends HTMLElement {
 
     const outputField = this.querySelector("#OutputField");
     const TOSmenuCheckbox = this.querySelector("#TOSmenuCheckbox");
+    const inputForm = this.querySelector("#InputForm")
     const userNameInput = this.querySelector("#usernameInp");
-const inputForm = this.querySelector("#InputForm")
     const dropbox = document.querySelector("dropbox-view");
 
-      inputForm.addEventListener("submit", async (event) => {
+    inputForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const username = userNameInput.value;
+      const translations = getTranslations();
       const hasConsented = TOSmenuCheckbox.checked;
-      if (!username) {
-        outputField.innerHTML = "Username and your file is required.";
-        return;
-      }
+      const username = userNameInput.value;
 
       const filename = dropbox.getFilename();
       console.log("Selected filename:", filename);
@@ -37,10 +36,10 @@ const inputForm = this.querySelector("#InputForm")
         });
         const data = await userResponse;
 
-        outputField.textContent = `User ${data.username} has been added with id: ${data.id}`;
+        outputField.textContent = `${translations.userAdded} ${data.id}`
         console.log(data);
       } catch (err) {
-        ((outputField.textContent = `Feil ved opprettelse av bruker`),
+        ((outputField.textContent = translations.userError),
           console.log(err));
       }
     });

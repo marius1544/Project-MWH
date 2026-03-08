@@ -23,7 +23,7 @@ export class DeleteUserClass extends HTMLElement {
 
         alert(data, userIdInp.value);
       } catch (err) {
-        console.log("Feil ved sletting av bruker:", err);
+        console.log(err);
       }
     });
   }
