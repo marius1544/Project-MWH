@@ -3,13 +3,28 @@
     "submitButton": "Send inn",
     "privacypolicy": "Les vår personvernerklæring",
     "privacylink": "her",
-     "droptext": "Eller dra og slipp en PNG her:",
-     "usernameInp": "Skriv inn brukernavnet ditt her",
-     "clicktos": "Klikk her for å godta",
-     "toslink": "bruksvilkår",
+    "droptext": "Eller dra og slipp en PNG her:",
+    "usernameInp": "Skriv inn brukernavnet ditt her",
+    "clicktos": "Klikk her for å godta",
+    "toslink": "bruksvilkår",
+    "retractConsent": "Trekk tilbake samtykke, og slett kontoen.",
+    "editUser": "Endre brukernavn",
     "feedback": {
-        "confirmation": "Ja det fungerer"
-    }
+        "confirmation": "Ja det fungerer",
+        "IncorrectId": "Feil id",
+        "CannotFindId": "Finner ikke id",
+        "UserUpdateSuccess": "Bruker oppdatert",
+        "DropboxMissingFile": "Mangler filnavn eller filtype",
+        "DropboxSuccess": "Dette fungerte og filen er:"
+    },
+    "check-file-feedback": {
+        "changedFile": "Endret filen eller status på filen",
+        "success": "Filen er slettet"
+    },
+    "userAdded": "Du har blitt lagt til med id:",
+    "userError": "Feil ved opprettelse av bruker",
+    "editUserSuccess": "Brukernavnet har blitt oppdatert til",
+    "editUserCantFindId": "Klarer ikke å finne id:",
+    "errorUsername": "Feil ved oppdatering av brukernavn",
+    "cantFindId": "Finner ikke id"
 }
-
-
