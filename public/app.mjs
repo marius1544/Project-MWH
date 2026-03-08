@@ -4,7 +4,7 @@ import { EditUserClass } from "./components/editUser.mjs"
 import { DeleteUserClass } from "./components/deleteUser.mjs";
 import { DropboxClass } from "./components/dropboxClass.mjs";
 import registerServiceWorker from "./service-worker/service-worker.mjs"
-import {loadLanguage} from "../public-localization/i18n-frontend-loader.mjs"
+import {loadLanguage} from "./public-localization/i18n-frontend-loader.mjs"
 customElements.define("create-user-view", CreateUserClass);
 customElements.define("user-settings-view", SettingsClass);
 customElements.define("edit-user-view", EditUserClass);

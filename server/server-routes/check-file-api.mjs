@@ -23,6 +23,7 @@ fileRouter.put("/:id", (req, res) => {
 
 fileRouter.delete("/:id", (req, res) => {
   const { id } = req.params;
+  const l10n = getL10n(req);
   res.status(200).send(`${l10n.check-file-feedback.success} ${id}`);
 })
 
