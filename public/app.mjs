@@ -3,7 +3,7 @@ import { SettingsClass } from "./components/settingsClass.mjs";
 import { EditUserClass } from "./components/editUser.mjs"
 import { DeleteUserClass } from "./components/deleteUser.mjs";
 import { DropboxClass } from "./components/dropboxClass.mjs";
-import registerServiceWorker from "./service-worker/service-worker.mjs"
+import registerServiceWorker from "./service-worker.mjs"
 import {loadLanguage} from "./public-localization/i18n-frontend-loader.mjs"
 customElements.define("create-user-view", CreateUserClass);
 customElements.define("user-settings-view", SettingsClass);
@@ -21,4 +21,7 @@ pageContainer.appendChild(UserSettings);
 pageContainer.appendChild(DropboxView);
 
 registerServiceWorker()
-loadLanguage();
+
+window.addEventListener("load", async () => {
+  await loadLanguage();
+});
