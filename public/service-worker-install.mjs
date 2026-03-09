@@ -31,8 +31,7 @@ const urls = [
     "/dropbox-background.jpg",
     "/icons/logo.png",
     "/service-worker-install.mjs",
-    "/service-worker.mjs",
-    "/lang"
+    "/service-worker.mjs"
 
 ]
 
