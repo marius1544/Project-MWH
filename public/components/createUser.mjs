@@ -14,7 +14,7 @@ export class CreateUserClass extends HTMLElement {
 
     const outputField = this.querySelector("#OutputField");
     const TOSmenuCheckbox = this.querySelector("#TOSmenuCheckbox");
-    const inputForm = this.querySelector("#InputForm")
+    const inputForm = this.querySelector("#InputForm");
     const userNameInput = this.querySelector("#usernameInp");
     const dropbox = document.querySelector("dropbox-view");
 
@@ -36,11 +36,14 @@ export class CreateUserClass extends HTMLElement {
         });
         const data = await userResponse;
 
-        outputField.textContent = `${translations.userAdded} ${data.id}`
-        console.log(data);
+        if (data.error) {
+          console.log(data);
+          outputField.textContent = data.error;
+          return;
+        }
+        outputField.textContent = `${translations.userAdded} ${data.id}`;
       } catch (err) {
-        ((outputField.textContent = translations.userError),
-          console.log(err));
+        ((outputField.textContent = translations.userError), console.log(err));
       }
     });
   }
