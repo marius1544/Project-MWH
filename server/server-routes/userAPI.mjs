@@ -1,9 +1,10 @@
 import express from "express";
 import { createUserService, getUserService, putUserService, deleteUserService } from "../services/userService.mjs";
 import { getL10n } from "../services/getL10n.mjs";
+import validateFileType from "./middleware/validateFiletype.mjs";
 const userRouter = express.Router();
 userRouter.use(express.json());
-userRouter.post("/", async (req, res) => {
+userRouter.post("/", validateFileType, async (req, res) => {
   try {
     const newUser = await createUserService(req.body);
     return res.status(201).json(newUser);
