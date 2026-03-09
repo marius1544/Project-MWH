@@ -1,42 +1,94 @@
 # API Documentation
 
 ## Base URL
-```
-http://localhost:8081
-```
 
-This API is built for learning purposes.  
-All data is stored in memory and is reset when the server restarts.  
+http://localhost:8081
+
+This API is built for learning purposes.\
+All data is stored **in memory** and will reset when the server
+restarts.\
 No database is used.
 
----
+The application also includes **internationalization (i18n)** and **PWA
+support**, meaning the application can cache resources and partially
+function offline.
 
-## Files API
+------------------------------------------------------------------------
 
-All file-related endpoints use `:id` as a URL parameter to identify a file.  
-Responses are simulated and files are not persisted.
+# Language API
 
----
+The application supports multiple languages.\
+The server detects the browser language using the `Accept-Language`
+header.
 
-### POST /files/:id
+If the browser language is Norwegian (`no`), Norwegian translations are
+returned.\
+Otherwise English is used.
+
+## GET /lang
+
+Returns the translation object used by the frontend.
+
+**Request** - Method: `GET` - URL: `/lang`
+
+The language returned is based on the browser's `Accept-Language`
+header.
+
+**Example response (English)**
+
+``` json
+{
+  "submitButton": "Submit",
+  "privacypolicy": "Privacy Policy",
+  "privacylink": "Read privacy policy",
+  "droptext": "Drop file here"
+}
+```
+
+**Example response (Norwegian)**
+
+``` json
+{
+  "submitButton": "Send inn",
+  "privacypolicy": "Personvernerklæring",
+  "privacylink": "Les personvernerklæringen",
+  "droptext": "Slipp fil her"
+}
+```
+
+**Description**\
+This endpoint is used by the frontend to dynamically load translations.\
+If the application is offline, previously cached responses may be used.
+
+------------------------------------------------------------------------
+
+# Files API
+
+All file-related endpoints use `:id` as a URL parameter to identify a
+file.\
+File operations are **simulated only** and files are not stored
+permanently.
+
+## POST /files/:id
 
 Creates (simulates) a new file.
 
-**Request**
-- Method: `POST`
-- URL: `/files/:id`
-- Body:
-```json
+**Request** - Method: `POST` - URL: `/files/:id`
+
+**Body**
+
+``` json
 {
   "filename": "myPicture.png"
 }
 ```
 
-The filename is checked against a simple file type validation function.
+The filename is validated using a simple file type validation function.
 
-**Response**  
+**Response**\
 Status: `201 Created`
-```json
+
+``` json
 {
   "message": "Added file 123",
   "filename": "picture1.png",
@@ -44,23 +96,22 @@ Status: `201 Created`
 }
 ```
 
-**Description**  
-Simulates creating a file with the given `id`.  
-The file is not stored and exists only in the response.
+**Description**\
+Simulates creating a file with the given `id`.\
+The file is not stored and only exists in the response.
 
----
+------------------------------------------------------------------------
 
-### GET /files/:id
+## GET /files/:id
 
 Retrieves (simulates) a file.
 
-**Request**
-- Method: `GET`
-- URL: `/files/:id`
+**Request** - Method: `GET` - URL: `/files/:id`
 
-**Response**  
+**Response**\
 Status: `200 OK`
-```json
+
+``` json
 {
   "id": "Retrieved file 123",
   "filename": "picture1.png",
@@ -68,81 +119,74 @@ Status: `200 OK`
 }
 ```
 
-**Description**  
-Simulates retrieving a file by its `id`.
+**Description**\
+Simulates retrieving a file using its `id`.
 
----
+------------------------------------------------------------------------
 
-### PUT /files/:id
+## PUT /files/:id
 
 Updates (simulates) a file or file status.
 
-**Request**
-- Method: `PUT`
-- URL: `/files/:id`
+**Request** - Method: `PUT` - URL: `/files/:id`
 
-**Response**  
+**Response**\
 Status: `200 OK`
-```
+
 Changed the file or the status on file 123
-```
 
-**Description**  
-Simulates updating a file or its status.  
-No validation or storage is performed.
+**Description**\
+Simulates updating file information or its upload status.\
+No validation or persistence is performed.
 
----
+------------------------------------------------------------------------
 
-### DELETE /files/:id
+## DELETE /files/:id
 
 Deletes (simulates) a file.
 
-**Request**
-- Method: `DELETE`
-- URL: `/files/:id`
+**Request** - Method: `DELETE` - URL: `/files/:id`
 
-**Response**  
+**Response**\
 Status: `200 OK`
-```
+
 Successfully deleted file 123
-```
 
-**Description**  
-Simulates deleting a file by its `id`.
+**Description**\
+Simulates deleting a file by its ID.
 
----
+------------------------------------------------------------------------
 
-## Users API
+# Users API
 
-The Users API handles account creation, consent, and deletion.  
-Users are identified by a generated unique ID.
+The Users API handles account creation, consent, updating usernames and
+deletion.
 
-**Base path**
-```
-/user
-```
+Users are identified by a generated **unique ID**.
 
----
+Base path: `/user`
 
-### POST /user
+All users exist only in memory and are deleted when the server restarts.
+
+## POST /user
 
 Creates a new user.
 
-**Request**
-- Method: `POST`
-- URL: `/user`
-- Body:
-```json
+**Request** - Method: `POST` - URL: `/user`
+
+**Body**
+
+``` json
 {
-  "id": "",
   "username": "exampleUser",
   "consent": true
 }
 ```
 
-**Response**  
+**Response**\
 Status: `201 Created`
-```json
+
+``` json
 {
   "id": "abc123",
   "username": "exampleUser",
@@ -150,92 +194,96 @@ Status: `201 Created`
 }
 ```
 
-**Description**  
-Creates a user only if consent is given.  
-Consent is required to use the service.
+**Description**\
+Creates a new user account.\
+User creation is only allowed if consent is provided.
 
----
+------------------------------------------------------------------------
 
-### DELETE /user/:id
+## GET /user
 
-Deletes a user and retracts consent.
+Retrieves stored users.
 
-**Request**
-- Method: `DELETE`
-- URL: `/user/id`
+**Request** - Method: `GET` - URL: `/user`
 
-**Response**  
-Status: `User "id" deleted`
-```
-User abc123 deleted.
-```
-
-**Description**  
-Deletes the user account and removes personal data.  
-Public contributions may remain in anonymized form.
-
----
-### PUT /user
-
-Changes username
-
-**Request**
-- Method: `PUT`
-- URL: `/user`
-
-**Test in Postman**
-- With the URL written: localhost:8080/user/id
-body should contain a json format of
-
-{
-  "username": "name"
-}
-
-**Response**  
+**Response**\
 Status: `200 OK`
-```json
-{"message": "User updated successfully",
-    "user": {
-        "id": "1d021024cd6ee5",
-        "username": "kari",
-        "consent": "Consent:true"
-    }
-}
-```
-### GET /user
 
-Retrieves user where the id matches the users id.
-
-**Request**
-- Method: `GET`
-- URL: `/user`
-
-**Response**  
-Status: `200 OK`
-```json
+``` json
 {
   "abc123": {
     "id": "abc123",
-    "username": "exampleUser",
+    "username": "exampleUser"
   }
 }
 ```
 
-**Description**  
-Returns only the id that matches and is stored in memory.  
----
+**Description**\
+Returns users currently stored in memory.
 
-## Settings API
+------------------------------------------------------------------------
 
-This is not currently functioning, but will be made when the application is near done.
+## PUT /user
 
-## Status Codes Used
+Updates a user's username.
 
-| Status Code | Meaning |
-|------------|--------|
-| 200 OK | Request successful |
-| 201 Created | Resource created |
-| 400 Bad Request | Invalid input or missing required fields |
-| 404 Not Found | Resource not found |
+**Request** - Method: `PUT` - URL: `/user`
 
----
+**Body**
+
+``` json
+{
+  "id": "abc123",
+  "username": "newName"
+}
+```
+
+**Response**\
+Status: `200 OK`
+
+``` json
+{
+  "message": "User updated successfully",
+  "user": {
+    "id": "abc123",
+    "username": "newName",
+    "consent": true
+  }
+}
+```
+
+**Description**\
+Updates the username of an existing user.
+
+------------------------------------------------------------------------
+
+## DELETE /user/:id
+
+Deletes a user and retracts consent.
+
+**Request** - Method: `DELETE` - URL: `/user/:id`
+
+**Response**\
+Status: `200 OK`
+
+User abc123 deleted.
+
+**Description**\
+Deletes the user account and removes stored personal data.
+
+------------------------------------------------------------------------
+
+# Settings API
+
+The Settings API is planned but not currently implemented.
+
+------------------------------------------------------------------------
+
+# Status Codes Used
+
+  Status Code       Meaning
+  ----------------- ------------------------------------------
+  200 OK            Request successful
+  201 Created       Resource created
+  400 Bad Request   Invalid input or missing required fields
+  404 Not Found     Resource not found
