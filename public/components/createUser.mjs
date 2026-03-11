@@ -13,20 +13,24 @@ export class CreateUserClass extends HTMLElement {
     this.appendChild(document.importNode(template.content, true));
 
     const outputField = this.querySelector("#OutputField");
-    const TOSmenuCheckbox = this.querySelector("#TOSmenuCheckbox");
+    const tosMenuCheckbox = this.querySelector("#tosMenuCheckbox");
     const inputForm = this.querySelector("#InputForm");
-    const userNameInput = this.querySelector("#usernameInp");
-    const dropbox = document.querySelector("dropbox-view");
+    const usernameInput = this.querySelector("#usernameInput");
+    const dropbox = this.querySelector("dropbox-view");
 
     inputForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       const translations = getTranslations();
-      const hasConsented = TOSmenuCheckbox.checked;
-      const username = userNameInput.value;
+      const hasConsented = tosMenuCheckbox.checked;
+      const username = usernameInput.value;
 
-      const filename = dropbox.getFilename();
-      console.log("Selected filename:", filename);
-
+      let filename;
+      if(filename === null || filename === undefined){
+        outputField.textContent = `${translations.pleaseSelectFile}`
+        return 
+      } else {
+      filename = dropbox.getFilename();
+      }
       try {
         const userResponse = UserRequest({
           method: "POST",
@@ -37,14 +41,13 @@ export class CreateUserClass extends HTMLElement {
         const data = await userResponse;
 
         if (data.error) {
-          console.log(data);
           outputField.textContent = data.error;
           return;
         }
         outputField.textContent = `${translations.userAdded} ${data.id}`;
       } catch (err) {
-        ((outputField.textContent = translations.userError), console.log(err));
+        outputField.textContent = `${translations.userError} ${err}`;
       }
-    });
-  }
+    })
+}
 }
