@@ -24,6 +24,7 @@
     },
     "userAdded": "You have been added with id:",
     "userError": "Error when trying to create user",
+    "pleaseSelectFile": "Please select file first",
     "editUserSuccess": "Successfully updated your username to",
     "editUserCantFindId": "Can't find id:",
     "errorUsername": "Error while updating username",

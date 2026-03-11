@@ -24,6 +24,7 @@
     },
     "userAdded": "Du har blitt lagt til med id:",
     "userError": "Feil ved opprettelse av bruker",
+    "pleaseSelectFile": "Please select file first",
     "editUserSuccess": "Brukernavnet har blitt oppdatert til",
     "editUserCantFindId": "Klarer ikke å finne id:",
     "errorUsername": "Feil ved oppdatering av brukernavn",
