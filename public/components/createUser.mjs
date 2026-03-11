@@ -16,7 +16,7 @@ export class CreateUserClass extends HTMLElement {
     const tosMenuCheckbox = this.querySelector("#tosMenuCheckbox");
     const inputForm = this.querySelector("#InputForm");
     const usernameInput = this.querySelector("#usernameInput");
-    const dropbox = this.querySelector("dropbox-view");
+    const dropbox = document.querySelector("dropbox-view");
 
     inputForm.addEventListener("submit", async (event) => {
       event.preventDefault();

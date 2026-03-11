@@ -71,7 +71,6 @@ Because of this separation, the storage system could later be replaced
 
 ## 4. User Interface
 - **Settings page** where the user can:  
-  - Switch between light mode and dark mode  
   - Change language from English to Norwegian (and vice versa)  
   - Preferences are saved to local storage  
 
