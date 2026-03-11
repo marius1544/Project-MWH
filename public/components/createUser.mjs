@@ -24,13 +24,12 @@ export class CreateUserClass extends HTMLElement {
       const hasConsented = tosMenuCheckbox.checked;
       const username = usernameInput.value;
 
-      let filename;
-      if(filename === null || filename === undefined){
-        outputField.textContent = `${translations.pleaseSelectFile}`
-        return 
-      } else {
-      filename = dropbox.getFilename();
-      }
+      const filename = dropbox.getFilename();
+
+if (!filename) {
+  outputField.textContent = translations.pleaseSelectFile;
+  return;
+}
       try {
         const userResponse = UserRequest({
           method: "POST",

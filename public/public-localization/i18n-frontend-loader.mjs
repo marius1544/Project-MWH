@@ -4,7 +4,7 @@ export async function loadLanguage() {
     const res = await fetch("/lang");
     translations = await res.json();
 
-    const usernameInpes = document.querySelector("#usernameInp")
+    const usernameInpes = document.querySelector("#usernameInput")
     const submitBtn = document.querySelector("#submitTOS");
     const privacypolicys = document.querySelector("#privacy-policy")
     const privacylink = document.querySelector("#privacy-link")
