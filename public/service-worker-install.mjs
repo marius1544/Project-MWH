@@ -1,4 +1,4 @@
-const cacheName = "my-site-cache";
+const cacheName = "my-site-cache-v1";
 
 const urls = [
     "/",
@@ -17,8 +17,6 @@ const urls = [
 
     "/utils-folder/utils.mjs",
     "/utils-folder/fetchreq.mjs",
-    "/utils-folder/Privacy-policy.md",
-    "/utils-folder/ToS.md",
     "/utils-folder/settings-gear.png",
 
     "/views/createuserView.html",
@@ -29,13 +27,11 @@ const urls = [
 
     "/public-localization/i18n-frontend-loader.mjs",
     "/dropbox-background.jpg",
-    "/icons/logo.png",
-    "/service-worker-install.mjs",
-    "/service-worker.mjs"
-
+    "/icons/logo.png"
 ]
 
 self.addEventListener("install", (event) => {
+    self.skipWaiting();
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
             return cache.addAll(urls);
@@ -43,7 +39,17 @@ self.addEventListener("install", (event) => {
     );
 });
 
-self.addEventListener("activate", () => {
+self.addEventListener("activate", (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) =>
+            Promise.all(
+        cacheNames.map(name => {
+            if (name !==cacheName){
+            return caches.delete(name);
+            }
+        })
+    ))
+    )
     console.log("Service worker activated");
 })
 
