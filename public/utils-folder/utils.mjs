@@ -25,3 +25,23 @@
         throw err;
        }
   }
+
+  export async function ConvertRequest(format) {
+      let url = `/export/${format}`;
+
+
+    const response = await fetchRequest(url, { 
+      method: "GET"
+       });
+
+    try {
+    if (format === "json") {
+      return await response.json();
+    } else {
+      return await response.text();
+    }
+  } catch (err) {
+    console.log(`Error ${err}`);
+    throw err;
+  }
+}
