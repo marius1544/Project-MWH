@@ -54,9 +54,8 @@
   flex-direction: column;
 }
 
-#usernameInp {
+#usernameInput {
   width: 100%;
-  max-width: 320px;
   padding: 10px 14px;
   font-size: 1rem;
   border-radius: 10px;
