@@ -2,7 +2,7 @@
 
 ## Concept
 
-Dropsafe is a platform where users can register and log in to their personal file storage system. After creating an account, users can manage their stored information and export their data in different formats.
+Dropsafe is a platform where users can send files to store it in the database. After creating an account, users can manage their stored information and export their data in different formats.
 
 The application is built with a layered backend architecture using Node.js, Express, and PostgreSQL.
 
@@ -86,6 +86,11 @@ The application includes a **Settings page** where the user can:
  - Export stored user data
  - Retract consent and delete account
  - Change username based on the users' id.
+
+---
+## Data storage
+
+Users get the filename of their file stored in the database with the id they use. The file is not stored anywhere, but can be retrieve by the filename.
 
 ---
 ## Data Export
@@ -197,6 +202,5 @@ Live URL: https://project-mwh.onrender.com/
 ------------------------------------------------------------------------
 
 ## Links
-- **AWS S3:** [https://aws.amazon.com/s3/](https://aws.amazon.com/s3/)  
 - **Jira plan:** [https://mariuswhansenmh.atlassian.net/jira/software/projects/KAN/boards/2](https://mariuswhansenmh.atlassian.net/jira/software/projects/KAN/boards/2?atlOrigin=eyJpIjoiYzEyZTA3ZjFhZDFmNDBjNGJlYTNmMTFmNDMzZjdmZTYiLCJwIjoiaiJ9)  
 - **Miro post-it board:** [https://miro.com/app/board/uXjVGO8IXGY=/?share_link_id=941630076718](https://miro.com/app/board/uXjVGO8IXGY=/?share_link_id=941630076718)
