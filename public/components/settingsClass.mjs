@@ -15,6 +15,20 @@ export class SettingsClass extends HTMLElement {
     const deleteUserViewDiv = this.querySelector("delete-user-view");
     const editUserViewDiv = this.querySelector("edit-user-view");
     const editUser = this.querySelector("#edit-user");
+    const settingsIdInput = this.querySelector("#settingsIdInput");
+    const select = this.querySelector("#options");
+    const button = this.querySelector("#exportButton");
+
+    button.addEventListener("click", () => {
+      const format = select.value;
+      const id = settingsIdInput.value.trim();
+
+      if (id) {
+        window.open(`/export/${format}/${id}`);
+      } else {
+        return;
+      }
+    });
     settingsIcon.addEventListener("click", () => {
       subMenu.classList.toggle("open");
     });
