@@ -40,6 +40,7 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
+    self.registration.unregister()
     event.waitUntil(
         caches.keys().then((cacheNames) =>
             Promise.all(
