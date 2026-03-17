@@ -9,13 +9,26 @@ export async function createUserService({ username, consent, filename }) {
 }
 
 export async function getUserService(id) {
-  return await getUserSQL(id);
+  const user = await getUserSQL(id)
+  if(!user){
+    throw new Error("User not found")
+  }
+  return user;
 }
 
 export async function putUserService(id, body) {
-  return await putUserSQL(id, body);
+  const user = await putUserSQL(id, body); 
+  if(!user){
+    throw new Error("User not found")
+  }
+  return user;
 }
 
 export async function deleteUserService(id) {
-  return await deleteUserSQL(id);
+ const user = await deleteUserSQL(id);
+    if (!user) {
+    throw new Error("User not found");
+  }
+
+  return user;
 }
