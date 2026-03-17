@@ -18,8 +18,13 @@
 
        try {
     const data = await response.json();
-    return data;
+   
       
+  if(!response.ok){
+    throw new Error("Can't find user");
+  }
+
+   return data;
        }catch(err){
         console.log(`Error ${err}`);
         throw err;
