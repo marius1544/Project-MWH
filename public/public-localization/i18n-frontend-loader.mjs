@@ -14,6 +14,11 @@ export async function loadLanguage() {
     const retractConsent = document.querySelector("#retract-consent")
     const editUser = document.querySelector("#edit-user")
     const filelabels = document.querySelector("#filelabel")
+    const exportUserdata = document.querySelector("#exportUserdata")
+    const settingsIdInput = document.querySelector("#settingsIdInput")
+    const exportButton = document.querySelector("#exportButton")
+    const submitUsernameBtn = document.querySelector("#submitUsernameBtn")
+    const retractButton = document.querySelector("#retract-delete")
     submitBtn.textContent = translations.submitButton;
     privacypolicys.textContent = translations.privacypolicy
     privacylink.textContent = translations.privacylink;
@@ -24,6 +29,11 @@ export async function loadLanguage() {
     retractConsent.textContent = translations.retractConsent
     editUser.textContent = translations.editUser
     filelabels.textContent = translations.filelabel
+    exportUserdata.textContent = translations.exportUserdata
+    settingsIdInput.placeholder = translations.settingsIdInput
+    exportButton.textContent = translations.exportButton
+    submitUsernameBtn.textContent = translations.submitButton
+    retractButton.textContent = translations.retractButton
 }
 
 export function getTranslations() {
