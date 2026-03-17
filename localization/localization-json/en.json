@@ -10,13 +10,19 @@
     "retractConsent": "Retract consent & delete account",
     "editUser": "Edit username",
     "filelabel": "Upload a PNG image",
+    "exportUserdata": "Export userdata",
+    "settingsIdInput": "Input your id",
+    "exportButton": "Export",
+    "retractButton": "Retract",
     "feedback": {
         "confirmation": "Jupp that works, okey dokey",
         "IncorrectId": "Incorrect id",
         "CannotFindId": "Cannot find id",
         "UserUpdateSuccess": "User updated successfully",
         "DropboxMissingFile": "Missing filename or type",
-        "DropboxSuccess": "Post has worked and file is:"
+        "DropboxSuccess": "Post has worked and file is:",
+        "SuccessfulDeletion": "Successfully deleted the user",
+        "ErrorDeletion": "Found no user with this id"
     },
     "check-file-feedback": {
         "changedFile": "Changed the file or the status on file",
@@ -27,6 +33,6 @@
     "pleaseSelectFile": "Please select file first",
     "editUserSuccess": "Successfully updated your username to",
     "editUserCantFindId": "Can't find id:",
-    "errorUsername": "Error while updating username",
+    "errorUsername": "Can't find that id in the database",
     "cantFindId": "Can't find id"
 }

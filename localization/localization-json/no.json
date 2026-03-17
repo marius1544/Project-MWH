@@ -10,13 +10,19 @@
     "retractConsent": "Trekk tilbake samtykke, og slett kontoen.",
     "editUser": "Endre brukernavn",
     "filelabel": "Last opp et PNG bilde",
+    "exportUserdata": "Eksporter brukerdata:",
+    "settingsIdInput": "Tast din id",
+    "exportButton": "Eksporter",
+    "retractButton": "Trekk tilbake",
     "feedback": {
         "confirmation": "Ja det fungerer",
         "IncorrectId": "Feil id",
         "CannotFindId": "Finner ikke id",
         "UserUpdateSuccess": "Bruker oppdatert",
         "DropboxMissingFile": "Mangler filnavn eller filtype",
-        "DropboxSuccess": "Dette fungerte og filen er:"
+        "DropboxSuccess": "Dette fungerte og filen er:",
+         "SuccessfulDeletion": "Slettet brukeren",
+         "ErrorDeletion": "Fant ingen brukere med denne id'en"
     },
     "check-file-feedback": {
         "changedFile": "Endret filen eller status på filen",
@@ -27,6 +33,6 @@
     "pleaseSelectFile": "Please select file first",
     "editUserSuccess": "Brukernavnet har blitt oppdatert til",
     "editUserCantFindId": "Klarer ikke å finne id:",
-    "errorUsername": "Feil ved oppdatering av brukernavn",
+    "errorUsername": "Finner ikke denne id'en i databasen",
     "cantFindId": "Finner ikke id"
 }
