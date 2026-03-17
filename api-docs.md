@@ -79,11 +79,8 @@ Creates (simulates) a new file.
 
 ``` json
 {
-  "filename": "myPicture.png",
-  "consent": true
+  "filename": "myPicture.png"
 }
-
-consent has to be true, and filename be defined in JSON body
 ```
 
 The filename is validated using a simple file type validation function.
@@ -182,8 +179,11 @@ Creates a new user.
 ``` json
 {
   "username": "exampleUser",
+  "filename": "filename.png",
   "consent": true
 }
+
+User must type filename and consent, but does not have to type in username. The identification is made on the unique id.
 ```
 
 **Response**\
@@ -193,7 +193,8 @@ Status: `201 Created`
 {
   "id": "abc123",
   "username": "exampleUser",
-  "consent": true
+  "consent": true,
+  "filename": "filename.png"
 }
 ```
 
