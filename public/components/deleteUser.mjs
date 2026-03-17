@@ -21,9 +21,10 @@ export class DeleteUserClass extends HTMLElement {
         });
         const data = await response;
 
-        alert(data, userIdInp.value);
+        alert(data.message);
       } catch (err) {
         console.log(err);
+        alert(err.message)
       }
     });
   }

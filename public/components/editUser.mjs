@@ -32,7 +32,7 @@ export class EditUserClass extends HTMLElement {
             `${translations.editUserSuccess} ${newUsernameInputFieldVar.value}`,
           );
         } else {
-          alert(`${translations.cantFindId} ${userID}`);
+          alert(`${translations.cantFindId} ${idInputFieldVar.value}`);
         }
       } catch (err) {
         alert(`${translations.errorUsername}`, err);
