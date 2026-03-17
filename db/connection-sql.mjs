@@ -8,7 +8,7 @@ export const client = new Client({
 export async function connectDB() {
   
 try {
-  client.connect()
+  await client.connect()
   console.log("Connected to PostgreSQL")  
 } catch (error) {
   console.error("Failed to connect", error);
