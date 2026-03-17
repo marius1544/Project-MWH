@@ -2,7 +2,7 @@
 
 ## Base URL
 
-http://localhost:8081
+https://project-mwh.onrender.com/
 
 This API is built for learning purposes.\
 All data is stored **in memory** and will reset when the server
@@ -79,8 +79,11 @@ Creates (simulates) a new file.
 
 ``` json
 {
-  "filename": "myPicture.png"
+  "filename": "myPicture.png",
+  "consent": true
 }
+
+consent has to be true, and filename be defined in JSON body
 ```
 
 The filename is validated using a simple file type validation function.

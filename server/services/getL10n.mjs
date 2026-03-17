@@ -1,6 +1,6 @@
 import i18n from "../../localization/i18n.mjs";
 export function getL10n(req) {
-  let lang = req.headers["accept-language"];
+  let lang = req.headers["accept-language"] || "en";
 
   lang = lang.split(",")[0].split("-")[0];
 
