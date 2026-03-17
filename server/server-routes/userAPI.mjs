@@ -27,11 +27,13 @@ userRouter.put("/:id", async (req, res) => {
 });
 
 userRouter.delete("/:id", async (req, res) => {
+  const l10n = getL10n(req);
   try {
     const result = await deleteUserService(req.params.id);
-    return res.status(200).json(result);
+    return res.status(200).json({message: l10n.feedback.SuccessfulDeletion, result});
   } catch (err) {
-    return res.status(404).json({ error: err.message });
+    console.error(err)
+    return res.status(404).json({ message: l10n.feedback.ErrorDeletion });
   }
 });
 

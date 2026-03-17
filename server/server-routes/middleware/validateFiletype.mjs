@@ -1,4 +1,4 @@
-let fileEndings = ["jpg", "jpeg", "ppx", "gif", "docx", "xlxs", "png", "exe"];
+let fileEndings = ["jpg", "jpeg", "pptx", "gif", "docx", "xlsx", "png", "exe"];
 
 function validateFileType(req, res, next) {
   const fileType = req.body.filename;

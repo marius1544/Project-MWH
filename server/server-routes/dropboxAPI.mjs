@@ -1,5 +1,4 @@
 import express from "express";
-import validateFileType from "./middleware.mjs";
 import { getL10n } from "../services/getL10n.mjs";
 const dropboxRouter = express.Router();
 
