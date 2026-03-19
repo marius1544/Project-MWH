@@ -30,7 +30,7 @@
     },
     "userAdded": "Du har blitt lagt til med id:",
     "userError": "Feil ved opprettelse av bruker",
-    "pleaseSelectFile": "Vennligst velg en fil å sende inn",
+    "pleaseSelectFile": "Vennligst velg en fil som skal sendes inn",
     "editUserSuccess": "Brukernavnet har blitt oppdatert til",
     "editUserCantFindId": "Klarer ikke å finne id:",
     "errorUsername": "Finner ikke denne id'en i databasen",

@@ -45,3 +45,10 @@ export async function putUserSQL(id, { username, consent }) {
 
   return result.rows[0];
 }
+
+export async function getAllUsers() {
+  const result = await client.query(
+    `SELECT * from projectmwhtest`,
+  );
+  return result.rows;
+}
