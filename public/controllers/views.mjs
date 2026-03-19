@@ -3,5 +3,6 @@ export const viewMap = {
     UserSettings: "./views/settingsView.html",
     EditUser: "./views/edituserView.html",
     DeleteUser: "./views/deleteuserView.html",
-    Dropbox: "./views/dropboxView.html"
+    Dropbox: "./views/dropboxView.html",
+    Admin: "./views/adminView.html"
 }
