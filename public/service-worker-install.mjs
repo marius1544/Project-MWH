@@ -26,6 +26,8 @@ const urls = [
     "/views/settingsView.html",
 
     "/public-localization/i18n-frontend-loader.mjs",
+    "/service-worker-install.mjs",
+    "/service-worker.mjs",
     "/dropbox-background.jpg",
     "/icons/logo.png"
 ]
@@ -40,7 +42,6 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-    self.registration.unregister()
     event.waitUntil(
         caches.keys().then((cacheNames) =>
             Promise.all(
