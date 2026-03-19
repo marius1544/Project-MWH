@@ -1,4 +1,3 @@
-let storageProvider = null;
 export const Users = {};
 
 function user() {
@@ -7,21 +6,6 @@ function user() {
     username: null,
     consent: false,
   };
-}
-function save(u) {
-  storageProvider.save(u);
-}
-
-export function createUserBackend({username, consent}){
-  validateConsent(consent)
-
-  const newUser = user();
-  newUser.id = generateID();
-  newUser.username = username;
-  newUser.consent = true;
-
-Users[newUser.id] = newUser;
-  return newUser;
 }
 export function validateConsent(consent) {
   const approved = consent === true || consent === "true";
