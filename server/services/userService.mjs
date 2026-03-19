@@ -1,4 +1,4 @@
-import { createUserSQL, getUserSQL, putUserSQL, deleteUserSQL } from "../../db/dbfile.mjs";
+import { createUserSQL, getUserSQL, putUserSQL, deleteUserSQL, getAllUsers } from "../../db/dbfile.mjs";
 
 export async function createUserService({ username, consent, filename }) {
 
@@ -31,4 +31,12 @@ export async function deleteUserService(id) {
   }
 
   return user;
+}
+
+export async function getAllUsersService() {
+  const user = await getAllUsers();
+  if(!user){
+    throw new Error("User not found")
+  }
+    return user;
 }

@@ -5,11 +5,12 @@ import validateFileType from "./middleware/validateFiletype.mjs";
 const userRouter = express.Router();
 userRouter.use(express.json());
 userRouter.post("/", validateFileType, async (req, res) => {
+  const l10n = getL10n(req);
   try {
     const newUser = await createUserService(req.body);
     return res.status(201).json(newUser);
   } catch (err) {
-    res.status(400).json(JSON.stringify({ error: err.message }));
+    res.status(400).json(JSON.stringify({ error: l10n.feedback.filelabel }));
   }
 });
 
