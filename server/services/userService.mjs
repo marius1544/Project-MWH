@@ -3,7 +3,7 @@ import { createUserSQL, getUserSQL, putUserSQL, deleteUserSQL } from "../../db/d
 export async function createUserService({ username, consent, filename }) {
 
   if (consent !== true) {
-    throw new Error("User must accept TOS to update account");
+    throw new Error("User must accept TOS to create account");
   }
   return await createUserSQL(username, consent, filename);
 }
