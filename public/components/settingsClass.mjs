@@ -1,5 +1,6 @@
 import { viewMap } from "../controllers/views.mjs";
 import loadView from "../controllers/viewLoader.mjs";
+import { navigateTo } from "../app.mjs";
 export class SettingsClass extends HTMLElement {
   constructor() {
     super();
@@ -19,6 +20,11 @@ export class SettingsClass extends HTMLElement {
     const select = this.querySelector("#options");
     const button = this.querySelector("#exportButton");
 
+    const goToAdminPage = this.querySelector("#goToAdminPage");
+    goToAdminPage.addEventListener("click", ()=>{
+    navigateTo("admin", true);
+
+    })
     button.addEventListener("click", () => {
       const format = select.value;
       const id = settingsIdInput.value.trim();
