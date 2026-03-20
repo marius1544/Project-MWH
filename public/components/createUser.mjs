@@ -16,7 +16,6 @@ export class CreateUserClass extends HTMLElement {
     const tosMenuCheckbox = this.querySelector("#tosMenuCheckbox");
     const inputForm = this.querySelector("#InputForm");
     const usernameInput = this.querySelector("#usernameInput");
-    const dropbox = document.querySelector("dropbox-view");
 
     inputForm.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -24,7 +23,7 @@ export class CreateUserClass extends HTMLElement {
       const hasConsented = tosMenuCheckbox.checked;
       const username = usernameInput.value;
 
-      const filename = dropbox.getFilename();
+      const filename = this.getFilename();
 
 if (!filename) {
   outputField.textContent = translations.pleaseSelectFile;
@@ -49,4 +48,12 @@ if (!filename) {
       }
     })
 }
+ getFilename() {
+    const fileInput = this.querySelector("#fileinput");
+
+    if (fileInput.files.length === 0) {
+      return
+    }
+    return fileInput.files[0].name;
+  }
 }
