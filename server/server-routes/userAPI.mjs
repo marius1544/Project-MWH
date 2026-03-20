@@ -10,7 +10,7 @@ userRouter.post("/", validateFileType, async (req, res) => {
     const newUser = await createUserService(req.body);
     return res.status(201).json(newUser);
   } catch (err) {
-    res.status(400).json(JSON.stringify({ error: l10n.feedback.filelabel }));
+   return res.status(500).json({message: l10n.filelabel});
   }
 });
 
