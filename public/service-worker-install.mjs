@@ -7,10 +7,10 @@ const urls = [
     "/app.css",
     "/manifest.json",
 
+    "/components/adminClass.mjs",
     "/components/createUser.mjs",
     "/components/deleteUser.mjs",
     "/components/editUser.mjs",
-    "/components/dropboxClass.mjs",
     "/components/settingsClass.mjs",
     "/controllers/views.mjs",
     "/controllers/viewLoader.mjs",
@@ -19,9 +19,9 @@ const urls = [
     "/utils-folder/fetchreq.mjs",
     "/utils-folder/settings-gear.png",
 
+    "/views/adminView.html",
     "/views/createuserView.html",
     "/views/deleteuserView.html",
-    "/views/dropboxView.html",
     "/views/edituserView.html",
     "/views/settingsView.html",
 
