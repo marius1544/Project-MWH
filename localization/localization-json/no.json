@@ -9,7 +9,7 @@
     "toslink": "bruksvilkår",
     "retractConsent": "Trekk tilbake samtykke, og slett kontoen.",
     "editUser": "Endre brukernavn",
-    "filelabel": "Last opp et PNG bilde",
+    "filelabel": "Last opp en fil med jpg, jpeg, pptx, gif, docx, xlsx or png endelse.",
     "exportUserdata": "Eksporter brukerdata:",
     "settingsIdInput": "Tast din id",
     "exportButton": "Eksporter",
