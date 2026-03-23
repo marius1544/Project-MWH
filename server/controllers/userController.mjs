@@ -14,7 +14,8 @@ export const createUser = async (req, res) => {
 export const putUser = async (req, res) => {
   const l10n = getL10n(req);
   try {
-    const user = await putUserService(req.params.id, req.body);
+    const { username } = req.body
+    const user = await putUserService(req.params.id, username, true);
     return res.status(200).json({
       message: l10n.feedback.UserUpdateSuccess,
       user,

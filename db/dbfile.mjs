@@ -33,7 +33,7 @@ export async function deleteUserSQL(id){
   return result.rows[0];
 }
 
-export async function putUserSQL(id, { username, consent }) {
+export async function putUserSQL(id, username, consent ) {
   const result = await client.query(
     `UPDATE projectmwhtest
      SET username = $2,
