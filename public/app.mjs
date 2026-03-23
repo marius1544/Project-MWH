@@ -21,6 +21,7 @@ registerServiceWorker()
 
 const viewMapper = {
   "create": mainView,
+  "admin-login": AdminClasses,
   "admin": AdminClasses
 }
 navigateTo("create")

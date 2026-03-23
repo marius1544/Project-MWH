@@ -22,7 +22,7 @@ export class SettingsClass extends HTMLElement {
 
     const goToAdminPage = this.querySelector("#goToAdminPage");
     goToAdminPage.addEventListener("click", ()=>{
-    navigateTo("admin", true);
+    navigateTo("admin-login", true);
 
     })
     button.addEventListener("click", () => {
