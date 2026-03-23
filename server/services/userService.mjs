@@ -16,8 +16,8 @@ export async function getUserService(id) {
   return user;
 }
 
-export async function putUserService(id, body) {
-  const user = await putUserSQL(id, body); 
+export async function putUserService(id, body, consent) {
+  const user = await putUserSQL(id, body, consent); 
   if(!user){
     throw new Error("User not found")
   }
