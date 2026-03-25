@@ -18,7 +18,7 @@ export class AdminClass extends HTMLElement {
     adminPasswordButton.addEventListener("click", async () => {
       const data = { password: adminPasswordInput.value }
       try {
-       const response = await fetch("http://127.0.0.1:3000/admin/login", {
+       const response = await fetch("https://project-mwh.onrender.com/admin/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
