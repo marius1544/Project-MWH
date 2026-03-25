@@ -8,14 +8,8 @@ const l10n = getL10n(req);
   } catch (err) {
     return res.status(404).json({ message: l10n.feedback.IncorrectId });
   }
-}
+};
 
 export const adminLogin = async (req, res) => {
-    const password = req.body.password;
-
-   if (password !== process.env.ADMIN_PASSWORD) {
-    return res.status(401).json({ error: "Wrong password" });
-  }
-
   res.status(200).send("Success")
 }
