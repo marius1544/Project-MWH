@@ -6,7 +6,9 @@ try{
         if (req.body.password) {
             let psw = req.body.password;
             req.body.password = "";
-            let securityToken = createSecurePassToken(psw, process.env.SECRET);
+            let securityToken = {
+                psw: hashPassword(psw, process.env.SECRET)
+            }
             req.token = securityToken;
         }
     }
@@ -16,17 +18,10 @@ next();
 }
 }
 
-
-function createSecurePassToken(psw, secret) {
-    return {
-        psw: hashPassword(psw, secret),
-    }
-}
-
 function hashPassword(psw, secret) {
-    const hmac = createHmac("sha256", secret);
-    hmac.update(psw);
-    return hmac.digest("hex");
+    const signer = createHmac("sha256", secret);
+    signer.update(psw);
+    return signer.digest("hex");
 }
 
 export default securityAudit;
