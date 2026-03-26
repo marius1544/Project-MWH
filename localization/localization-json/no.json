@@ -1,5 +1,4 @@
 {
-   "frontend": {
         "title": "Sikre filene dine her",
         "submitButton": "Send inn",
         "privacypolicy": "Les vår personvernerklæring",
@@ -10,14 +9,15 @@
         "toslink": "bruksvilkår",
         "retractConsent": "Trekk tilbake samtykke, og slett kontoen.",
         "editUser": "Endre brukernavn",
-        "filelabel": "Kun .jpg, .jpeg, .pptx, .gif, .docx, .xlsx og .png er tillatt.",
+        "filelabel": "Kun .jpg, .jpeg, .pptx, .gif, .docx, .xlsx, .exe og .png er tillatt.",
         "exportUserdata": "Eksporter brukerdata:",
         "settingsIdInput": "Tast din id",
         "exportButton": "Eksporter",
         "retractButton": "Trekk tilbake",
         "adminPageButton": "Gå til administratorpanelet",
-        "fileinput": "Ingen fil valgt"
-   },
+        "fileinput": "Ingen fil valgt",
+        "changeUsernameidInputField": "Tast inn din id",
+        "newUsernameInp": "Tast inn ditt nye brukernavn",
     "feedback": {
         "confirmation": "Ja det fungerer",
         "IncorrectId": "Feil id",

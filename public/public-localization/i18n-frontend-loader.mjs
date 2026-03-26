@@ -20,7 +20,10 @@ export async function loadLanguage() {
     const submitUsernameBtn = document.querySelector("#submitUsernameBtn");
     const retractButton = document.querySelector("#retract-delete");
     const adminPageButton = document.querySelector("#goToAdminPage");
-
+    const changeUsernameidInputField = document.querySelector("#idInputField")
+    const retractConsentInp = document.querySelector("#userIdInp");
+    const newUsernameInp = document.querySelector("#newUsernameInputField")
+    
     function translate(element, text) {
           element.textContent = text;
     }
@@ -29,22 +32,26 @@ export async function loadLanguage() {
           element.placeholder = text;
     }
 
-    translatePlaceholder(usernameInput, translations.frontend.usernameInp);
-    translate(submitBtn, translations.frontend.submitButton);
-    translate(privacyPolicy, translations.frontend.privacypolicy);
-    translate(privacyLink, translations.frontend.privacylink);
-    translate(dropText, translations.frontend.droptext);
-    translate(clickTos, translations.frontend.clicktos);
-    translate(tosLink, translations.frontend.toslink);
-    translate(retractConsent, translations.frontend.retractConsent);
-    translate(editUser, translations.frontend.editUser);
-    translate(fileLabel, translations.frontend.filelabel);
-    translate(exportUserdata, translations.frontend.exportUserdata);
-    translatePlaceholder(settingsIdInput, translations.frontend.settingsIdInput);
-    translate(exportButton, translations.frontend.exportButton);
-    translate(submitUsernameBtn, translations.frontend.submitButton);
-    translate(retractButton, translations.frontend.retractButton);
-    translate(adminPageButton, translations.frontend.adminPageButton);
+  
+    translatePlaceholder(newUsernameInp, translations.newUsernameInp)
+    translatePlaceholder(retractConsentInp, translations.settingsIdInput)
+    translatePlaceholder(changeUsernameidInputField, translations.changeUsernameidInputField)
+    translatePlaceholder(usernameInput, translations.usernameInp)
+    translatePlaceholder(settingsIdInput, translations.settingsIdInput)
+    translate(submitBtn, translations.submitButton);
+    translate(privacyPolicy, translations.privacypolicy);
+    translate(privacyLink, translations.privacylink);
+    translate(dropText, translations.droptext);
+    translate(clickTos, translations.clicktos);
+    translate(tosLink, translations.toslink);
+    translate(retractConsent, translations.retractConsent);
+    translate(editUser, translations.editUser);
+    translate(fileLabel, translations.filelabel);
+    translate(exportUserdata, translations.exportUserdata);
+    translate(exportButton, translations.exportButton);
+    translate(submitUsernameBtn, translations.submitButton);
+    translate(retractButton, translations.retractButton);
+    translate(adminPageButton, translations.adminPageButton);
 }
 
 export function getTranslations() {

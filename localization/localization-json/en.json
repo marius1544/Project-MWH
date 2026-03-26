@@ -1,5 +1,5 @@
 {
-  "frontend":{
+  
         "title": "Secure your files here",
         "submitButton": "Submit",
         "privacypolicy": "Read our privacy policy",
@@ -10,14 +10,15 @@
         "toslink": "Terms of service",
         "retractConsent": "Retract consent & delete account",
         "editUser": "Edit username",
-        "filelabel": "Only .jpg, .jpeg, .pptx, .gif, .docx, .xlsx or .png is allowed.",
+        "filelabel": "Only .jpg, .jpeg, .pptx, .gif, .docx, .xlsx, .exe or .png is allowed.",
         "exportUserdata": "Export userdata",
         "settingsIdInput": "Input your id",
         "exportButton": "Export",
         "retractButton": "Retract",
         "adminPageButton": "Go to admin page",
-        "fileinput": "No file chosen"
-  },
+        "fileinput": "No file chosen",
+        "changeUsernameidInputField": "Input your id",
+        "newUsernameInp": "Enter new username",
     "feedback": {
         "confirmation": "Jupp that works, okey dokey",
         "IncorrectId": "Incorrect id",
