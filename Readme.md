@@ -199,3 +199,6 @@ Live URL: https://project-mwh.onrender.com/
 ## Links
 - **Jira plan:** [https://mariuswhansenmh.atlassian.net/jira/software/projects/KAN/boards/2] 
 - **Miro post-it board:** [https://miro.com/app/board/uXjVGO8IXGY=/?share_link_id=941630076718]
+
+Dropbox background picture is taken from: https://medium.com/dropbox-design/illustrating-a-more-human-brand-part-2-d2e9494cc8a3 by author Michael Jeter.
+Logo is made with the use og Artifical intelligence programs from OpenAi.
