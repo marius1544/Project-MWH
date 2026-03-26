@@ -10,12 +10,10 @@ The application is built with a layered backend architecture using Node.js, Expr
 
 ## Persistence and Storage (PostgreSQL)
 
-The application now stores user information in an externally hosted
+The application stores user information in an externally hosted
 **PostgreSQL database on Render**.
 
 When a user account is created, the following flow occurs:
-
-Client → API → Service Layer → Database → API → Client
 
 1.  The client sends a `POST /user` request containing:
 
@@ -51,7 +49,7 @@ replaceable.
 
 Responsible only for handling HTTP requests and responses. 
 
-- Recieves input from the client
+- Receives  input from the client
 - Sends output back to the client
 - Forwards requests to the service layers
 
@@ -60,7 +58,7 @@ Responsible only for handling HTTP requests and responses.
 Responsible for application rules: 
 
 - Validates username 
-- Requires user consent to the Terms of Service. If the user fails to disagree, it will display in the database as false.
+- Requires user consent to the Terms of Service. If the user does not accept the Terms of Service, the account will not be created.
 - Decides whether a user operation is allowed
 - Validates uploaded file types before proceding.
 
@@ -76,8 +74,6 @@ Responsible only for communicating with PostgreSQL:
  - `UPDATE` modify user 
  - `DELETE` remove user
 
-Because of this separation, the storage system could later be replaced
-(for example CSV storage) without changing the routes.
 
 ## 4. User Interface
 
@@ -90,12 +86,12 @@ The application includes a **Settings page** where the user can:
 ---
 ## Data storage
 
-Users get the filename of their file stored in the database with the id they use. The file is not stored anywhere, but can be retrieve by the filename.
+Users get the filename of their file stored in the database with the id they use. The file is not stored anywhere, but can be retrieved by the user id.
 
 ---
 ## Data Export
 
-The platform supports exporting stored user data in multiple formats.
+The platform supports exporting stored user data in JSON and CSV formats.
 
 ### JSON Export
 
@@ -149,30 +145,29 @@ This validation helps:
 Before a file is accepted or processed, the system checks the file type.
 If the file format is not allowed, the upload is rejected.
 
-------------------------------------------------------------------------
+Storing .exe is sceptical, but I chose to do it.
 
 ------------------------------------------------------------------------
 
-## API Endpoints
+## Security
 
-Base path: `/user`
+Instead of comparing passwords in plaintext, the system uses a hashing approach based on HMAC (SHA-256) together with a secret key stored in environment variables.
 
-  Method   Endpoint    Description
-  -------- ----------- ---------------
-  POST     /user       Create user
-  GET      /user/:id   Retrieve user
-  PUT      /user/:id   Update user
-  DELETE   /user/:id   Delete user
+The secret key is stored in the PostgreSQL database.
+A validation step compares this hash with a stored hash (ADMIN_PASSWORD_HASH)
 
-Export endpoints:
-
-  Method   Endpoint           Description
-  -------- ------------------ --------------------------
-  GET      /export/json/:id   Export user data as JSON
-  GET      /export/csv/:id    Export user data as CSV
-
-
+This solution improves security compared to plaintext password handling, but it is still a simplified approach.
 ------------------------------------------------------------------------
+
+## API Endpoints (can be found in api-docs.md)
+
+
+## Info about files: 
+File operations only store the name of the file.
+
+The filename is validated using a simple file type validation function found in server -> server-routes -> middleware -> validateFiletype.
+
+The file functionality is implemented into the user creation
 
 ## Terms of Service
 
@@ -202,5 +197,5 @@ Live URL: https://project-mwh.onrender.com/
 ------------------------------------------------------------------------
 
 ## Links
-- **Jira plan:** [https://mariuswhansenmh.atlassian.net/jira/software/projects/KAN/boards/2](https://mariuswhansenmh.atlassian.net/jira/software/projects/KAN/boards/2?atlOrigin=eyJpIjoiYzEyZTA3ZjFhZDFmNDBjNGJlYTNmMTFmNDMzZjdmZTYiLCJwIjoiaiJ9)  
-- **Miro post-it board:** [https://miro.com/app/board/uXjVGO8IXGY=/?share_link_id=941630076718](https://miro.com/app/board/uXjVGO8IXGY=/?share_link_id=941630076718)
+- **Jira plan:** [https://mariuswhansenmh.atlassian.net/jira/software/projects/KAN/boards/2] 
+- **Miro post-it board:** [https://miro.com/app/board/uXjVGO8IXGY=/?share_link_id=941630076718]

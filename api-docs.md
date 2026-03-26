@@ -4,26 +4,19 @@
 
 https://project-mwh.onrender.com/
 
-This API is built for learning purposes.\
-All data is stored **in memory** and will reset when the server
-restarts.\
-No database is used.
-
-The application also includes **internationalization (i18n)** and **PWA
-support**, meaning the application can cache resources and partially
-function offline.
+All data is stored in a postgreSQL database into a table called projectmwhtest 
 
 ------------------------------------------------------------------------
 
 # Language API
 
-The application supports multiple languages.\
+The application supports multiple languages.
 The server detects the browser language using the `Accept-Language`
 header.
 
 If the browser language is Norwegian (`no`), Norwegian translations are
-returned.\
-Otherwise English is used.
+returned.
+Otherwise English is used. English is also the only language used if the app goes offline.
 
 ## GET /lang
 
@@ -38,122 +31,22 @@ header.
 
 ``` json
 {
-  "submitButton": "Submit",
-  "privacypolicy": "Privacy Policy",
-  "privacylink": "Read privacy policy",
-  "droptext": "Drop file here"
+    "frontend": {
+        "title": "Secure your files here",
+        "submitButton": "Submit",
+        "privacypolicy": "Read our privacy policy",
+        "privacylink": "here",
+        "droptext": "Or drag and drop a PNG here:",
+    }
 }
+
+Here we are getting the whole translation in English as standard.
+
+If we want it in Norwegian we use the Accept-Language header and specify "no"
 ```
 
-**Example response (Norwegian)**
-
-``` json
-{
-  "submitButton": "Send inn",
-  "privacypolicy": "Personvernerklæring",
-  "privacylink": "Les personvernerklæringen",
-  "droptext": "Slipp fil her"
-}
-```
-
-**Description**\
-This endpoint is used by the frontend to dynamically load translations.\
-If the application is offline, previously cached responses may be used.
-
-------------------------------------------------------------------------
-
-# Files API
-
-All file-related endpoints use `:id` as a URL parameter to identify a
-file.\
-File operations are **simulated only** and files are not stored
-permanently.
-
-## POST /files/:id
-
-Creates (simulates) a new file.
-
-**Request** - Method: `POST` - URL: `/files/:id`
-
-**Body**
-
-``` json
-{
-  "filename": "myPicture.png"
-}
-```
-
-The filename is validated using a simple file type validation function.
-
-**Response**\
-Status: `201 Created`
-
-``` json
-{
-  "message": "Added file 123",
-  "filename": "picture1.png",
-  "filestatus": "not uploaded"
-}
-```
-
-**Description**\
-Simulates creating a file with the given `id`.\
-The file is not stored and only exists in the response.
-
-------------------------------------------------------------------------
-
-## GET /files/:id
-
-Retrieves (simulates) a file.
-
-**Request** - Method: `GET` - URL: `/files/:id`
-
-**Response**\
-Status: `200 OK`
-
-``` json
-{
-  "id": "Retrieved file 123",
-  "filename": "picture1.png",
-  "filestatus": "not uploaded"
-}
-```
-
-**Description**\
-Simulates retrieving a file using its `id`.
-
-------------------------------------------------------------------------
-
-## PUT /files/:id
-
-Updates (simulates) a file or file status.
-
-**Request** - Method: `PUT` - URL: `/files/:id`
-
-**Response**\
-Status: `200 OK`
-
-Changed the file or the status on file 123
-
-**Description**\
-Simulates updating file information or its upload status.\
-No validation or persistence is performed.
-
-------------------------------------------------------------------------
-
-## DELETE /files/:id
-
-Deletes (simulates) a file.
-
-**Request** - Method: `DELETE` - URL: `/files/:id`
-
-**Response**\
-Status: `200 OK`
-
-Successfully deleted file 123
-
-**Description**\
-Simulates deleting a file by its ID.
+**Description**
+This endpoint is used by the frontend to dynamically load translations.
 
 ------------------------------------------------------------------------
 
@@ -166,7 +59,7 @@ Users are identified by a generated **unique ID**.
 
 Base path: `/user`
 
-All users exist only in memory and are deleted when the server restarts.
+All users exist in a postgreSQL database.
 
 ## POST /user
 
@@ -176,7 +69,7 @@ Creates a new user.
 
 **Body**
 
-``` json
+``` json raw body
 {
   "username": "exampleUser",
   "filename": "filename.png",
@@ -184,6 +77,8 @@ Creates a new user.
 }
 
 User must type filename and consent, but does not have to type in username. The identification is made on the unique id.
+
+If the file is not allowed, you get a 500 internal
 ```
 
 **Response**\
@@ -210,20 +105,23 @@ Retrieves stored users.
 
 **Request** - Method: `GET` - URL: `/user`
 
-**Response**\
+The user you want is put after user
+meaning if their id is abc123 then it is /user/abc123
+
+**Response**
 Status: `200 OK`
 
 ``` json
 {
-  "abc123": {
     "id": "abc123",
-    "username": "exampleUser"
+    "username": "exampleUser",
+    "consent": true,
+    "filename": "filename.png"
   }
-}
 ```
 
-**Description**\
-Returns users currently stored in memory.
+**Description**
+Returns users currently stored in database.
 
 ------------------------------------------------------------------------
 
@@ -233,14 +131,17 @@ Updates a user's username.
 
 **Request** - Method: `PUT` - URL: `/user`
 
+where the id comes after /user and the new username gpes in body.
+If the id is abc123 -> /user/abc123
 **Body**
 
 ``` json
 {
-  "id": "abc123",
-  "username": "newName"
+  "username": "newName" (where the username here is their new username)
 }
 ```
+
+Consent is always true since the user had created its username before. 
 
 **Response**\
 Status: `200 OK`
@@ -251,12 +152,13 @@ Status: `200 OK`
   "user": {
     "id": "abc123",
     "username": "newName",
-    "consent": true
+    "consent": true,
+    "filename": "img.png"
   }
 }
 ```
 
-**Description**\
+**Description**
 Updates the username of an existing user.
 
 ------------------------------------------------------------------------
@@ -267,6 +169,7 @@ Deletes a user and retracts consent.
 
 **Request** - Method: `DELETE` - URL: `/user/:id`
 
+Where the users id comes after /user -> /user/abc123
 **Response**\
 Status: `200 OK`
 
@@ -279,7 +182,55 @@ Deletes the user account and removes stored personal data.
 
 # Settings API
 
-The Settings API is planned but not currently implemented.
+The Settings API is for exporting user data
+
+Exporting JSON data: 
+https://project-mwh.onrender.com/export/json/id
+
+where id here is the user id.
+
+Exporting CSV data:
+
+export/csv/id
+
+where id here is the user id.
+
+# Admin API
+
+Method: `POST` URL: `/admin/login`
+
+**Body**
+
+``` json
+{
+  "password": "password"
+}
+```
+If the password is correct you get a success message.
+If the password is wrong: 
+
+**Response**\
+Status: `401 Unautorized`
+
+{
+    "error": "Wrong password"
+}
+
+
+**Admin can get all registered users:**
+
+Method: `GET` URL: `/admin`
+
+**Response**
+
+ {
+        "id": "your id",
+        "username": "your username",
+        "consent": true,
+        "filename": "yourfile.jpeg"
+    }
+
+
 
 ------------------------------------------------------------------------
 
