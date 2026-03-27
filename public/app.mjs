@@ -24,8 +24,8 @@ const viewMapper = {
   "admin-login": AdminClasses,
   "admin": AdminClasses
 }
-navigateTo("create")
-
+await loadLanguage();
+navigateTo("create");
 
 export function navigateTo(view, push) {
     if (push) {
@@ -34,7 +34,3 @@ export function navigateTo(view, push) {
     pageContainer.innerHTML = "";
     pageContainer.appendChild(viewMapper[view]);
 }
-
-window.addEventListener("load", async () => {
-  await loadLanguage();
-});
