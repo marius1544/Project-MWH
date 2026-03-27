@@ -25,11 +25,15 @@ export async function loadLanguage() {
     const newUsernameInp = document.querySelector("#newUsernameInputField")
     
     function translate(element, text) {
-          element.textContent = text;
+        if(element){  
+        element.textContent = text;
+        }
     }
 
     function translatePlaceholder(element, text) {
+        if(element){
           element.placeholder = text;
+        }
     }
 
   
